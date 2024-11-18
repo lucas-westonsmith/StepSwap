@@ -19,7 +19,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_18_154112) do
     t.bigint "shoe_id", null: false
     t.date "start_date"
     t.date "end_date"
-    t.string "status"                                                                                                                                                   
+    t.string "status"
     t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
