@@ -11,13 +11,56 @@
   }
 
   .nav-link {
-    color: white !important; // Links are white
-    font-weight: bold;       // Makes them stand out
-    margin-right: 15px;      // Adds space between buttons
+    color: white !important; // Liens en blanc
+    font-weight: normal;      // Retirer le gras des liens par défaut
+    margin-right: 15px;       // Ajoute de l'espace entre les boutons (par défaut)
   }
 
   .nav-link:hover {
-    color: #ddd !important; // Slight gray tint on hover
+    color: #ddd !important; // Légère nuance de gris au survol
+  }
+
+  /* Groupe Home proche du logo */
+  .nav-home {
+    display: flex;
+    align-items: center; // Aligner verticalement le logo et "Home"
+    margin-right: 50px; // Espacement à droite pour séparer du deuxième groupe
+  }
+
+  /* Groupe "Browse Shoes", "My Reservations", "Wishlist" */
+  .nav-group {
+    display: flex;
+    gap: 15px;
+    margin-right: 50px; // Séparation avec le groupe précédent
+  }
+
+  /* Groupe "My Listings" et "Publish a Listing" */
+  .nav-actions {
+    display: flex;
+    gap: 15px;
+    margin-right: 50px; // Séparation avec le groupe précédent
+  }
+
+  /* Spécificité du bouton Login */
+  .nav-link.login {
+    background-color: #480DBF; // Couleur du fond du bouton Login
+    color: white !important;    // Assurer que le texte soit blanc sur fond coloré
+    padding: 12px 20px;         // Plus de padding pour agrandir le bouton
+    border-radius: 5px;         // Arrondir les bords du bouton
+    font-weight: bold;          // Garder le texte en gras pour le bouton
+  }
+
+  .nav-link.login:hover {
+    background-color: #3c0ba4; // Couleur au survol du bouton Login
+  }
+
+  /* Avatar */
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
   }
 }
 
