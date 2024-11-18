@@ -1,0 +1,19 @@
+<h1>Available Shoes for Rent</h1>
+
+<div class="shoe-list">
+  <% @shoes.each do |shoe| %>
+    <div class="shoe-card">
+      <h3><%= shoe.brand %></h3>
+      <p><strong>Size:</strong> <%= shoe.size %></p>
+      <p><strong>Condition:</strong> <%= shoe.condition.capitalize %></p>
+      <p><strong>Price per Day:</strong> $<%= shoe.price_per_day %></p>
+      <p><strong>Availability:</strong> <%= shoe.availability ? 'Available' : 'Not Available' %></p>
+
+      <%= link_to 'View Details', shoe_path(shoe), class: 'btn btn-primary' %>
+
+      <% if user_signed_in? && shoe.availability %>
+        <%= link_to 'Book Now', new_shoe_booking_path(shoe), class: 'btn btn-secondary' %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
