@@ -1,5 +1,7 @@
 class ShoesController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_shoe, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_shoe_owner!, only: [:edit, :update, :destroy]
 
   def index
     @shoes = Shoe.all
@@ -55,5 +57,11 @@ class ShoesController < ApplicationController
 
   def shoe_params
     params.require(:shoe).permit(:brand, :size, :condition, :price_per_day, :description, :availability, :shoe_url)
+  end
+
+  def authorize_shoe_owner!
+    unless @shoe.user == current_user
+      redirect_to shoes_path, alert: 'You are not authorized to edit or delete this shoe listing.'
+    end
   end
 end
