@@ -12,6 +12,7 @@ gem "sprockets-rails"
 gem "pg", "~> 1.1"
 
 gem "devise"
+gem 'popper_js', '~> 2.11', '>= 2.11.8'
 
 gem 'faker'
 # Use the Puma web server [https://github.com/puma/puma]
