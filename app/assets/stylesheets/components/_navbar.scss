@@ -1,12 +1,23 @@
-.navbar-lewagon {
+.navbar-stepswap {
   justify-content: space-between;
-  background: white;
+  background: black;
+
+  .navbar-collapse {
+    flex-grow: 0;
+  }
+
+  .navbar-brand img {
+    width: 100px;
+  }
+
+  .nav-link {
+    color: white !important; // Links are white
+    font-weight: bold;       // Makes them stand out
+    margin-right: 15px;      // Adds space between buttons
+  }
+
+  .nav-link:hover {
+    color: #ddd !important; // Slight gray tint on hover
+  }
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
-}

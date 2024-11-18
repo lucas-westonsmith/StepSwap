@@ -1,0 +1,48 @@
+<div class="navbar navbar-expand-sm navbar-light navbar-stepswap">
+  <div class="container-fluid">
+    <%= link_to "#", class: "navbar-brand" do %>
+      <%= image_tag "StepSwap.png" %>
+    <% end %>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <% if user_signed_in? %>
+          <!-- Home -->
+          <li class="nav-item active">
+            <%= link_to "Home", root_path, class: "nav-link text-white" %>
+          </li>
+
+          <!-- Wishlist -->
+          <li class="nav-item">
+            <%= link_to "Wishlist", wishlist_path, class: "nav-link text-white" %>
+          </li>
+
+          <!-- Publish a Listing -->
+          <li class="nav-item">
+            <%= link_to "Publish a Listing", new_shoe_listing_path, class: "nav-link text-white" %>
+          </li>
+
+          <!-- My Offers -->
+          <li class="nav-item">
+            <%= link_to "My Offers", seller_offers_path, class: "nav-link text-white" %>
+          </li>
+
+          <!-- Accepted Offers -->
+          <li class="nav-item">
+            <%= link_to "Accepted Offers", accepted_offers_path, class: "nav-link text-white" %>
+          </li>
+        <% else %>
+          <!-- Login Button -->
+          <li class="nav-item">
+            <%= link_to "Login", new_user_session_path, class: "nav-link text-white" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
