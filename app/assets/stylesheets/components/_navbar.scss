@@ -24,14 +24,14 @@
   .nav-home {
     display: flex;
     align-items: center; // Aligner verticalement le logo et "Home"
-    margin-right: 50px; // Espacement à droite pour séparer du deuxième groupe
+    margin-right: 200px; // Espacement à droite pour séparer du deuxième groupe
   }
 
   /* Groupe "Browse Shoes", "My Reservations", "Wishlist" */
   .nav-group {
     display: flex;
     gap: 15px;
-    margin-right: 50px; // Séparation avec le groupe précédent
+    margin-right: 200px; // Séparation avec le groupe précédent
   }
 
   /* Groupe "My Listings" et "Publish a Listing" */
@@ -63,4 +63,3 @@
     cursor: pointer;
   }
 }
-
