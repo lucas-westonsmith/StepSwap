@@ -12,8 +12,10 @@ Rails.application.routes.draw do
       get 'filter'
     end
 
-    resources :bookings, only: [:new, :create, :index, :show, :edit, :update]
+    resources :bookings, only: [:new, :create, :show, :edit, :update]
   end
+
+  resources :bookings, only: [:index]
 
   # Defines the root path route ("/")
   # root "posts#index"
