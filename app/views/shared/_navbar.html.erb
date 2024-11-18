@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-stepswap">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
+    <%= link_to "/", class: "navbar-brand" do %>
       <%= image_tag "StepSwap.png" %>
     <% end %>
 
@@ -9,40 +9,44 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Groupe Home proche du logo -->
       <ul class="navbar-nav me-auto">
+        <li class="nav-item nav-home">
+          <%= link_to "Home", root_path, class: "nav-link text-white" %>
+        </li>
+
+        <!-- Groupe "Browse Shoes", "My Reservations", "Wishlist" -->
+        <li class="nav-item nav-group">
+          <%= link_to "Browse Shoes", root_path, class: "nav-link text-white" %>
+          <%= link_to "My Reservations", root_path, class: "nav-link text-white" %>
+          <%= link_to "Wishlist", root_path, class: "nav-link text-white" %>
+        </li>
+
+        <!-- Groupe "My Listings" et "Publish a Listing" -->
+        <li class="nav-item nav-actions">
+          <%= link_to "My Listings", root_path, class: "nav-link text-white" %>
+          <%= link_to "Publish a Listing", root_path, class: "nav-link text-white" %>
+        </li>
+      </ul>
+
+      <!-- Authentification: Login ou Avatar -->
+      <ul class="navbar-nav">
         <% if user_signed_in? %>
-          <!-- Home -->
-          <li class="nav-item active">
-            <%= link_to "Home", root_path, class: "nav-link text-white" %>
-          </li>
-
-          <!-- Wishlist -->
-          <li class="nav-item">
-            <%= link_to "Wishlist", wishlist_path, class: "nav-link text-white" %>
-          </li>
-
-          <!-- Publish a Listing -->
-          <li class="nav-item">
-            <%= link_to "Publish a Listing", new_shoe_listing_path, class: "nav-link text-white" %>
-          </li>
-
-          <!-- My Offers -->
-          <li class="nav-item">
-            <%= link_to "My Offers", seller_offers_path, class: "nav-link text-white" %>
-          </li>
-
-          <!-- Accepted Offers -->
-          <li class="nav-item">
-            <%= link_to "Accepted Offers", accepted_offers_path, class: "nav-link text-white" %>
+          <!-- Avatar Dropdown -->
+          <li class="nav-item dropdown">
+            <%= image_tag current_user.avatar_url || "default-avatar.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Profile", root_path, class: "dropdown-item" %>
+              <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: { turbo_method: :delete } %>
+            </div>
           </li>
         <% else %>
           <!-- Login Button -->
           <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link text-white" %>
+            <%= link_to "Login", new_user_session_path, class: "nav-link text-white login" %> <!-- Bouton Login -->
           </li>
         <% end %>
       </ul>
     </div>
   </div>
 </div>
-

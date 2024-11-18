@@ -19,7 +19,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_18_154112) do
     t.bigint "shoe_id", null: false
     t.date "start_date"
     t.date "end_date"
-    t.string "status"
+    t.string "status"                                                                                                                                                   
     t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -49,6 +49,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_18_154112) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "avatar_url"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
