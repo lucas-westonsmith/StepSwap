@@ -1,2 +1,16 @@
-<h1>Bookings#index</h1>
-<p>Find me in app/views/bookings/index.html.erb</p>
+<div class="container">
+  <h1>Your Bookings</h1>
+
+  <ul class="bookings-list">
+    <% @bookings.each do |booking| %>
+      <li class="booking-item">
+        <p><strong>Shoe:</strong> <%= booking.shoe.brand %></p>
+        <p><strong>Start Date:</strong> <%= booking.start_date %></p>
+        <p><strong>End Date:</strong> <%= booking.end_date %></p>
+        <p><strong>Status:</strong> <%= booking.status %></p> <!-- Assuming you have a status attribute -->
+        <p><strong>Message:</strong> <%= booking.message %></p>
+        <p><strong>Payment Method:</strong> <%= booking.payment_method %></p>
+      </li>
+    <% end %>
+  </ul>
+</div>
