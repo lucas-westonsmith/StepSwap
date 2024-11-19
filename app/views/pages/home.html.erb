@@ -1,29 +1,28 @@
 <!-- home.html.erb -->
+<!-- Gradient Section -->
 <div class="section gradient">
   <div class="content">
     <h1 style="color: white;">Step into style, anytime, anywhere</h1>
     <p style="color: white;">Discover the ultimate footwear rental platform</p>
     <p style="color: white;">Access high-end shoes for any occasion, without the commitment—style made easy, starting today</p>
-</div>
+  </div>
 </div>
 
+<!-- White Section -->
 <div class="section white">
   <div class="content">
     <h1>How it works</h1>
     <div class="steps-container">
-      <!-- Step 1 -->
       <div class="step-box">
         <h2 class="step-number">Step 1</h2>
         <h3 class="step-title">Explore</h3>
         <p>Browse through a curated selection of high-end shoes for every occasion</p>
       </div>
-      <!-- Step 2 -->
       <div class="step-box">
         <h2 class="step-number">Step 2</h2>
         <h3 class="step-title">Rent</h3>
         <p>Select your size and dates, and we’ll deliver them to your door</p>
       </div>
-      <!-- Step 3 -->
       <div class="step-box">
         <h2 class="step-number">Step 3</h2>
         <h3 class="step-title">Return</h3>
@@ -32,32 +31,55 @@
     </div>
   </div>
 </div>
+  <!-- Image Slider Section -->
+<div class="my-container">
+<h1>Check out the latest models</h1>
+  <div class="image-container" id="slide3">
+    <div class="image-slider">
+      <div class="shadow-shoes"></div>
+      <a href="/shoes"><img src="https://i.postimg.cc/kgwyTKsT/3.png"></a>
+    </div>
+  </div>
 
+  <div class="image-container" id="slide2">
+    <div class="image-slider">
+      <div class="shadow-shoes"></div>
+      <a href="/shoes"><img src="https://i.postimg.cc/ZqMxSm13/2.png"></a>
+    </div>
+  </div>
+
+  <div class="image-container" id="slide1">
+    <div class="image-slider">
+      <div class="shadow-shoes"></div>
+      <a href="/shoes"><img src="https://i.postimg.cc/9fMYK0NC/1.png"></a>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- Black Section -->
 <div class="section black">
   <div class="content">
     <h1>Why choose StepSwap?</h1>
-
     <div class="features-container">
       <div class="feature-box">
-        <i class="fa-solid fa-copyright"></i> <!-- Icone pour High-end selection -->
+        <i class="fa-solid fa-copyright"></i>
         <h2>High-end selection</h2>
         <p>Access luxury and designer brands</p>
       </div>
-
       <div class="feature-box">
-        <i class="fa-solid fa-piggy-bank"></i> <!-- Icone pour Affordable luxury -->
+        <i class="fa-solid fa-piggy-bank"></i>
         <h2>Affordable luxury</h2>
         <p>Style for every budget, without the commitment</p>
       </div>
-
       <div class="feature-box">
-        <i class="fa-solid fa-leaf"></i> <!-- Icone pour Eco-friendly option -->
+        <i class="fa-solid fa-leaf"></i>
         <h2>Eco-friendly option</h2>
         <p>Reduce waste by reusing, not buying</p>
       </div>
-
       <div class="feature-box">
-        <i class="fa-solid fa-door-open"></i> <!-- Icone pour Convenience -->
+        <i class="fa-solid fa-door-open"></i>
         <h2>Convenience</h2>
         <p>Delivered and picked up at your door</p>
       </div>
@@ -65,6 +87,7 @@
   </div>
 </div>
 
+<!-- Grey Section -->
 <div class="section grey">
   <div class="content">
     <h1>What our users say</h1>
@@ -82,7 +105,6 @@
         <img src="https://jhoutdoors.com/cdn/shop/collections/brand-image-4_6da466d0-aac1-4eb5-acd4-97462e3abd33_1200x1200.png?v=1666367141" alt="Hoka">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Vans-logo.svg/2560px-Vans-logo.svg.png" alt="Vans">
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Converse_logo.svg/2560px-Converse_logo.svg.png" alt="Converse">
-
         <!-- Deuxième série de logos (identique à la première) -->
         <img src="https://i.pinimg.com/originals/20/60/2d/20602d43cc993811e5a6bd1886af4f33.png" alt="Nike">
         <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Adidas_logo.png" alt="Adidas">
@@ -97,4 +119,125 @@
       </div>
     </div>
   </div>
-</div>
+
+
+<script>
+// START STATUS SLIDER
+var status = 1;
+
+// GET THE ELEMENT
+var slider1 = document.getElementById('slide1');
+var slider2 = document.getElementById('slide2');
+var slider3 = document.getElementById('slide3');
+
+var next = document.getElementById('next-btn');
+var prev = document.getElementById('prev-btn');
+
+// PLAYING THE SLIDER
+var myinterval = setInterval(sliders,5000);
+
+// ADD CLASS TO HIDE SLIDER 2 & 3
+slider2.classList.add('hide-slider');
+slider3.classList.add('hide-slider');
+
+// SLIDE ANIMATION
+function sliders(){
+	if(status == 1){
+		slider1.classList.remove('hide-slider');
+		slider2.classList.add('hide-slider');
+		slider3.classList.add('hide-slider');
+
+		setTimeout(function(){
+			status = 2;
+		},300);
+	}
+	if(status == 2){
+		slider2.classList.remove('hide-slider');
+		slider1.classList.add('hide-slider');
+		slider3.classList.add('hide-slider');
+		setTimeout(function(){
+			status = 3;
+		},600)
+	}
+	if(status == 3){
+		slider3.classList.remove('hide-slider');
+		slider2.classList.add('hide-slider');
+		slider1.classList.add('hide-slider');
+		setTimeout(function(){
+			status = 1;
+		},900)
+	}
+}
+
+
+
+// STOP ON HOVER
+slider1.onmouseenter = function(){
+	clearInterval(myinterval);
+}
+slider1.onmouseleave = function(){
+	myinterval = setInterval(sliders,5000);
+}
+
+slider2.onmouseenter = function(){
+	clearInterval(myinterval);
+}
+slider2.onmouseleave = function(){
+	myinterval = setInterval(sliders,5000);
+}
+
+slider3.onmouseenter = function(){
+	clearInterval(myinterval);
+}
+slider3.onmouseleave = function(){
+	myinterval = setInterval(sliders,5000);
+}
+
+next.onmouseenter = function(){
+	clearInterval(myinterval);
+}
+next.onmouseleave = function(){
+	myinterval = setInterval(sliders,5000);
+}
+
+prev.onmouseenter = function(){
+	clearInterval(myinterval);
+}
+prev.onmouseleave = function(){
+	myinterval = setInterval(sliders,5000);
+}
+
+
+
+
+
+// CLICK BUTTON
+
+next.onclick = function(){
+	if(status === 1){
+		status = 2;
+	}
+	if(status === 2){
+		status = 3;
+	}
+	if(status === 3){
+		status = 1;
+	}
+	sliders();
+}
+
+prev.onclick = function(){
+	if(status === 1){
+		status = 3;
+	}
+	if(status === 3){
+		status = 2;
+	}
+	if(status === 2){
+		status = 1;
+	}
+	sliders();
+	console.log(status);
+}
+
+</script>
