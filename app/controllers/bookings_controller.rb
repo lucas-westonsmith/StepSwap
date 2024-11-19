@@ -8,17 +8,18 @@ class BookingsController < ApplicationController
   end
 
   def new
-    @booking = @shoe.bookings.new
+    @booking = Booking.new
   end
 
   def create
-    @booking = @shoe.bookings.new(booking_params)
+    @booking = Booking.new(booking_params)
     @booking.user = current_user
+    @booking.shoe = @shoe
 
     if @booking.save
       redirect_to bookings_path, notice: 'Your booking request has been sent to the owner.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 

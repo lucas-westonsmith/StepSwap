@@ -2,7 +2,7 @@
   <h1>Book <%= @shoe.brand %></h1>
 
   <div class="booking-form">
-    <%= simple_form_for @booking, url: bookings_path, local: true do |f| %>
+    <%= simple_form_for @booking, url: shoe_bookings_path(@shoe), local: true do |f| %>
       <!-- Shoe Details -->
       <div class="shoe-details">
         <p><strong>Shoe:</strong> <%= @shoe.brand %></p>
