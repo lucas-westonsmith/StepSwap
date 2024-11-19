@@ -10,6 +10,7 @@
 
 require 'faker'
 
+Shoe.destroy_all
 # Create 10 shoe entries
 10.times do
   shoe = Shoe.create!(
@@ -19,7 +20,7 @@ require 'faker'
     price_per_day: Faker::Commerce.price(range: 10.0..50.0), # Price between 10 and 50
     description: Faker::Lorem.sentence(word_count: 10), # Random description
     availability: [true, false].sample, # Randomly assign availability
-    shoe_url: Faker::Internet.url, # Generate a random URL
+    shoe_url: "https://cdn.thewirecutter.com/wp-content/media/2024/05/running-shoes-2048px-9718.jpg", # Generate a random URL
     user_id: User.first.id # Associate the first user (or create your own user)
   )
   puts "Created shoe: #{shoe.brand}, Size: #{shoe.size}, Price per day: $#{shoe.price_per_day}"

@@ -1,19 +1,32 @@
-<h1>Available Shoes for Rent</h1>
+<div class="container my-5">
+  <h1 class="mb-4 text-center">Available Shoes for Rent</h1>
 
-<div class="shoe-list">
-  <% @shoes.each do |shoe| %>
-    <div class="shoe-card">
-      <h3><%= shoe.brand %></h3>
-      <p><strong>Size:</strong> <%= shoe.size %></p>
-      <p><strong>Condition:</strong> <%= shoe.condition.capitalize %></p>
-      <p><strong>Price per Day:</strong> $<%= shoe.price_per_day %></p>
-      <p><strong>Availability:</strong> <%= shoe.availability ? 'Available' : 'Not Available' %></p>
+  <div class="shoe-list row">
+    <% @shoes.each do |shoe| %>
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-sm" style="height: 100%; border-radius: 8px;">
+          <!-- Image of the shoe -->
+          <img class="card-img-top" src="<%= shoe.shoe_url || 'default-image.jpg' %>" alt="<%= shoe.brand %>" style="border-top-left-radius: 8px; border-top-right-radius: 8px;">
 
-      <%= link_to 'View Details', shoe_path(shoe), class: 'btn btn-primary' %>
+          <div class="card-body">
+            <h5 class="card-title"><%= shoe.brand %></h5>
+            <p class="card-text mb-3">
+              <strong>Size:</strong> <%= shoe.size %><br>
+              <strong>Condition:</strong> <%= shoe.condition.capitalize %><br>
+              <strong>Price per Day:</strong> $<%= shoe.price_per_day %><br>
+              <strong>Availability:</strong> <%= shoe.availability ? 'Available' : 'Not Available' %>
+            </p>
 
-      <% if user_signed_in? && shoe.availability %>
-        <%= link_to 'Book Now', new_shoe_booking_path(shoe), class: 'btn btn-secondary' %>
-      <% end %>
-    </div>
-  <% end %>
+            <div class="d-flex justify-content-between">
+              <%= link_to 'View Details', shoe_path(shoe), class: 'btn btn-outline-primary btn-sm' %>
+              <% if user_signed_in? && shoe.availability %>
+                <%= link_to 'Book Now', new_shoe_booking_path(shoe), class: 'btn btn-outline-success btn-sm' %>
+              <% end %>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
