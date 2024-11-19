@@ -1,9 +1,77 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<!-- home.html.erb -->
+<div class="section gradient">
+  <div class="content">
+    <h1 style="color: white;">Step into style, anytime, anywhere</h1>
+    <p style="color: white;">Discover the ultimate footwear rental platform</p>
+    <p style="color: white;">Access high-end shoes for any occasion, without the commitment—style made easy, starting today</p>
+</div>
+</div>
 
-<%= link_to 'Sign up', new_user_session_path,  {:remote => true, 'data-toggle' =>  "modal", 'data-target' => '#modal-window', class: 'btn btn-primary btn-lg'}  %>
-<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content"></div>
+<div class="section white">
+  <div class="content">
+    <h1>How it works</h1>
+    <div class="steps-container">
+      <!-- Step 1 -->
+      <div class="step-box">
+        <h2 class="step-number">Step 1</h2>
+        <h3 class="step-title">Explore</h3>
+        <p>Browse through a curated selection of high-end shoes for every occasion</p>
+      </div>
+      <!-- Step 2 -->
+      <div class="step-box">
+        <h2 class="step-number">Step 2</h2>
+        <h3 class="step-title">Rent</h3>
+        <p>Select your size and dates, and we’ll deliver them to your door</p>
+      </div>
+      <!-- Step 3 -->
+      <div class="step-box">
+        <h2 class="step-number">Step 3</h2>
+        <h3 class="step-title">Return</h3>
+        <p>After your event, send them back with our prepaid return label</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section black">
+  <div class="content">
+    <h1>Why choose StepSwap?</h1>
+
+    <div class="features-container">
+      <div class="feature-box">
+        <i class="fa-solid fa-copyright"></i> <!-- Icone pour High-end selection -->
+        <h2>High-end selection</h2>
+        <p>Access luxury and designer brands</p>
+      </div>
+
+      <div class="feature-box">
+        <i class="fa-solid fa-piggy-bank"></i> <!-- Icone pour Affordable luxury -->
+        <h2>Affordable luxury</h2>
+        <p>Style for every budget, without the commitment</p>
+      </div>
+
+      <div class="feature-box">
+        <i class="fa-solid fa-leaf"></i> <!-- Icone pour Eco-friendly option -->
+        <h2>Eco-friendly option</h2>
+        <p>Reduce waste by reusing, not buying</p>
+      </div>
+
+      <div class="feature-box">
+        <i class="fa-solid fa-door-open"></i> <!-- Icone pour Convenience -->
+        <h2>Convenience</h2>
+        <p>Delivered and picked up at your door</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="section grey">
+  <div class="content">
+    <h1>What our users say</h1>
+    <p>"The shoes arrived on time, looked stunning, and made my event perfect!" — Emma, London</p>
+    <h2>Proud to partner with leading footwear brands</h2>
+    <p>[INSERT LOGOS OF SHOE BRANDS]</p>
   </div>
 </div>

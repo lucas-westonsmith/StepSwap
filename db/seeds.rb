@@ -11,8 +11,8 @@
 require 'faker'
 
 # Create 10 shoe entries
-1.times do
-  shoe = Shoe.new(
+10.times do
+  shoe = Shoe.create!(
     brand: Faker::Commerce.brand,
     size: Faker::Number.between(from: 36, to: 46), # Assuming sizes are between 36 and 46
     condition: ['new', 'used', 'worn'].sample, # Randomly select a condition
@@ -22,6 +22,5 @@ require 'faker'
     shoe_url: Faker::Internet.url, # Generate a random URL
     user_id: User.first.id # Associate the first user (or create your own user)
   )
-  shoe.save
   puts "Created shoe: #{shoe.brand}, Size: #{shoe.size}, Price per day: $#{shoe.price_per_day}"
 end

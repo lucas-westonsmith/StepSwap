@@ -1,1 +1,174 @@
-// Specific CSS for your home-page
+.section {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 40px;
+  display: flex;
+  overflow: hidden;
+  height: 760px;
+  width: 100%;
+
+  &.gradient {
+    background: rgb(0,0,0);
+    background: linear-gradient(360deg, rgba(0,0,0,1) 0%, rgba(12,12,103,1) 86%, rgba(72,13,191,1) 100%);
+
+    h1 {
+      font-size: 70px; /* Specific font size for h1 in gradient section */
+    }
+  }
+
+  &.white {
+    background-color: white;
+    color: black;
+  }
+
+  &.black {
+    background-color: black;
+    color: white;
+  }
+
+  &.grey {
+    background-color: #F9FAFB;
+    color: black;
+  }
+
+  .content {
+    max-width: 1200px;
+    text-align: center;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 0 auto;
+  }
+}
+
+// Section "How it works" - Boîtes grisées, plus grandes et espacées
+.section.white {
+  .steps-container {
+    display: flex;
+    justify-content: space-between; /* Espace entre les boîtes */
+    gap: 40px; /* Plus grand écart entre les boîtes */
+    margin-top: 40px; /* Espace au-dessus des boîtes */
+  }
+
+  .step-box {
+    flex: 1; /* Prend une largeur égale */
+    background: #F9FAFB; /* Couleur gris clair */
+    border-radius: 10px; /* Coins arrondis */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+    padding: 30px; /* Plus de padding pour augmenter la taille */
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation au survol */
+    cursor: pointer; /* Pour pointer au survol */
+
+    &:hover {
+      transform: scale(1.05); /* Agrandissement léger au survol */
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Ombre plus marquée */
+    }
+
+    .step-number {
+      font-size: 32px; /* Plus grand pour les étapes */
+      color: #480DBF; /* Violet */
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .step-title {
+      font-size: 22px; /* Agrandir le titre des étapes */
+      font-weight: normal;
+      color: #333; /* Gris foncé */
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 16px; /* Texte plus petit pour les descriptions */
+      color: #666; /* Gris clair */
+      line-height: 1.6;
+    }
+  }
+}
+
+// Media query pour les petits écrans
+@media (max-width: 768px) {
+  .section.white .steps-container {
+    flex-direction: column; /* Les boîtes passent en colonne */
+    gap: 20px; /* Moins d'espace sur petits écrans */
+  }
+
+  .section.white .step-box {
+    flex: 1 1 100%; /* Les boîtes prennent toute la largeur */
+    padding: 20px; /* Ajuste le padding */
+  }
+}
+
+// Section "Why choose StepSwap" - Icônes au-dessus des titres
+.section.black {
+  .content h1 {
+    color: white;
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+
+  .features-container {
+    display: flex;
+    flex-wrap: wrap; /* Permet un affichage responsive */
+    justify-content: space-between;
+    gap: 40px; /* Plus d'espace entre les boîtes */
+    margin-top: 40px;
+  }
+
+  .feature-box {
+    flex: 1 1 calc(50% - 20px); /* Chaque boîte prend 50% de la largeur avec un écart de 20px */
+    background: white;
+    border-radius: 10px; /* Coins arrondis */
+    padding: 30px; /* Augmente la taille des boîtes */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.05); /* Agrandissement léger au survol */
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Ombre plus marquée au survol */
+    }
+
+    i {
+      font-size: 40px; /* Taille de l'icône */
+      color: #480DBF; /* Couleur violette pour les icônes */
+      margin-bottom: 15px; /* Espacement entre l'icône et le titre */
+    }
+
+    h2 {
+      font-size: 26px;
+      color: #480DBF; /* Couleur violette pour les titres */
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 18px;
+      color: #555; /* Gris pour le texte */
+      line-height: 1.6;
+    }
+  }
+}
+
+// Pour les petits écrans, ajuster la largeur des boîtes à 100%
+@media (max-width: 768px) {
+  .section.black .features-container {
+    flex-direction: column; /* Les boîtes se mettent en colonne */
+    gap: 20px; /* Moins d'espace entre les boîtes */
+  }
+
+  .section.black .feature-box {
+    flex: 1 1 100%; /* Les boîtes prennent toute la largeur */
+  }
+}
+
