@@ -1,5 +1,5 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-stepswap">
-  <div class="container-fluid mx-5">
+  <div class="container-fluid">
     <%= link_to "/", class: "navbar-brand" do %>
       <%= image_tag "StepSwap.png" %>
     <% end %>
@@ -36,7 +36,7 @@
           <li class="nav-item dropdown">
             <%= image_tag current_user.avatar_url || "default-avatar.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Profile", root_path, class: "dropdown-item" %>
+              <%= link_to "Profile", profile_path, class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: { turbo_method: :delete } %>
             </div>
           </li>
