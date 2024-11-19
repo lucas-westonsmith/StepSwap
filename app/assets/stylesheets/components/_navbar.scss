@@ -24,14 +24,14 @@
   .nav-home {
     display: flex;
     align-items: center; // Aligner verticalement le logo et "Home"
-    margin-right: 200px; // Espacement à droite pour séparer du deuxième groupe
+    margin-right: 50px; // Espacement à droite pour séparer du deuxième groupe
   }
 
   /* Groupe "Browse Shoes", "My Reservations", "Wishlist" */
   .nav-group {
     display: flex;
     gap: 15px;
-    margin-right: 200px; // Séparation avec le groupe précédent
+    margin-right: 50px; // Séparation avec le groupe précédent
   }
 
   /* Groupe "My Listings" et "Publish a Listing" */
@@ -45,7 +45,7 @@
   .nav-link.login {
     background-color: #480DBF; // Couleur du fond du bouton Login
     color: white !important;    // Assurer que le texte soit blanc sur fond coloré
-    padding: 12px 20px;         // Plus de padding pour agrandir le bouton
+    padding: 12px 30px;         // Plus de padding pour agrandir le bouton
     border-radius: 5px;         // Arrondir les bords du bouton
     font-weight: bold;          // Garder le texte en gras pour le bouton
   }
