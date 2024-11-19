@@ -1,0 +1,104 @@
+<div class="container my-5">
+  <!-- Shoe Brand -->
+  <h1 class="text-center mb-4"><%= @shoe.brand %></h1>
+
+  <div class="row mb-4">
+    <!-- Large Image Section -->
+    <div class="col-md-7">
+      <img class="img-fluid add-shadow" src="<%= @shoe.shoe_url || 'default-image.jpg' %>" alt="<%= @shoe.brand %>" style="max-height: 400px; object-fit: cover;">
+    </div>
+
+    <!-- Booking Form and Reviews Section (Right side) -->
+    <div class="col-md-5 bg-light rounded add-shadow">
+      <% if user_signed_in? && @shoe.availability %>
+        <h4 class="text-center">Book this Shoe</h4>
+        <%= form_with model: @shoe, url: new_shoe_booking_path(@shoe), method: :get, local: true do |f| %>
+          <div class="form-group">
+            <%= f.label :start_date, "Start Date" %>
+            <%= f.date_field :start_date, class: 'form-control', required: true, id: 'start_date' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :end_date, "End Date" %>
+            <%= f.date_field :end_date, class: 'form-control', required: true, id: 'end_date' %>
+          </div>
+          <div class="form-group">
+            <label><strong>Total:</strong> $<span id="total_price"><%= @total %></span></label> <!-- Dynamically calculated total -->
+          </div>
+          <div class="text-center">
+            <%= f.submit 'Book Now', class: 'btn btn-success btn-lg mt-3' %>
+          </div>
+        <% end %>
+      <% else %>
+        <p class="text-center text-warning">Sorry, this shoe is not available for booking at the moment.</p>
+      <% end %>
+
+      <!-- Customer Reviews Section -->
+      <div class="mt-4">
+        <h5>Customer Reviews</h5>
+        <p>No reviews yet</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shoe Details Section -->
+<div class="container my-5">
+  <!-- Shoe Details Section -->
+  <div class="row mb-4">
+    <!-- First Row: Two Text Items -->
+    <div class="col-md-6 mb-3">
+      <p class="detail-item"><strong>Size:</strong> <%= @shoe.size %></p>
+    </div>
+    <div class="col-md-6 mb-3">
+      <p class="detail-item"><strong>Condition:</strong> <%= @shoe.condition.capitalize %></p>
+    </div>
+  </div>
+
+  <div class="row mb-4">
+    <!-- Second Row: Two Text Items -->
+    <div class="col-md-6 mb-3">
+      <p class="detail-item"><strong>Price per Day:</strong> $<%= @shoe.price_per_day %></p>
+    </div>
+    <div class="col-md-6 mb-3">
+      <p class="detail-item"><strong>Availability:</strong> <%= @shoe.availability ? 'Available' : 'Not Available' %></p>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Description Section -->
+    <div class="col-md-12">
+      <h5 class="detail-header"><strong>Description:</strong></h5>
+      <p class="detail-description"><%= @shoe.description %></p>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!-- Add JavaScript for Total Price Calculation -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Get elements
+    const startDateField = document.getElementById('start_date');
+    const endDateField = document.getElementById('end_date');
+    const totalPriceLabel = document.getElementById('total_price');
+    const pricePerDay = <%= @shoe.price_per_day %>; // Pass price per day from Rails
+
+    // Function to update the total price
+    function updateTotalPrice() {
+      const startDate = new Date(startDateField.value);
+      const endDate = new Date(endDateField.value);
+
+      // Ensure both dates are selected
+      if (startDate && endDate && endDate >= startDate) {
+        const timeDifference = endDate - startDate;
+        const days = timeDifference / (1000 * 3600 * 24); // Convert milliseconds to days
+        const totalPrice = days * pricePerDay;
+        totalPriceLabel.textContent = totalPrice.toFixed(2);
+      }
+    }
+
+    // Add event listeners to date fields
+    startDateField.addEventListener('change', updateTotalPrice);
+    endDateField.addEventListener('change', updateTotalPrice);
+  });
+</script>
