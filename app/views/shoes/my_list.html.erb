@@ -1,0 +1,16 @@
+<div class="container">
+  <h1>Your Lists</h1>
+
+  <ul class="shoes-list">
+    <% @shoes.each do |shoe| %>
+      <li class="shoes-item">
+        <p><strong>Brand:</strong> <%= shoe.brand %></p>
+        <p><strong>Size:</strong> <%= shoe.size %></p>
+        <p><strong>Condition:</strong> <%= shoe.condition %></p>
+        <p><strong>Price per day:</strong> <%= shoe.price_per_day %></p>
+        <p><strong>Image:</strong> </p>
+        <img src="<%= shoe.shoe_url %>" alt="<%= shoe.brand %>">
+      </li>
+    <% end %>
+  </ul>
+</div>

@@ -49,6 +49,10 @@ class ShoesController < ApplicationController
     redirect_to shoes_url, notice: 'Your shoe has been successfully removed from the listings.'
   end
 
+  def my_list
+      @shoes = current_user.shoes
+  end
+
   private
 
   def set_shoe

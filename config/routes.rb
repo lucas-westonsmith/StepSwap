@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
     collection do
       get 'filter'
+      get 'my_list'
     end
 
     resources :bookings, only: [:new, :create, :show, :edit, :update]
