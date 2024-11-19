@@ -1,0 +1,13 @@
+<div class="sign-in"><h2>Account information</h2><br></div>
+<div style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
+  <div class="profile-info" >
+    <p><strong>Frist name:   </strong> <%= current_user.first_name %></p>
+    <p><strong>Last name:   </strong><%= current_user.last_name %></p>
+    <p><strong>Email:   </strong> <%= current_user.email %></p>
+    <p><strong>Phone number:   </strong><%= current_user.phone_number %></p>
+    <p><strong>Date of birth:   </strong><%= current_user.date_of_birth %></p>
+  </div>
+</div>
+<div class="edit-div" style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
+  <%= link_to "Edit profile", edit_user_registration_path, class: "edit-button" %>
+</div>
