@@ -13,7 +13,7 @@ require 'faker'
 Shoe.destroy_all
 # Create 10 shoe entries
 10.times do
-  shoe = Shoe.new(
+  shoe = Shoe.create!(
     brand: Faker::Commerce.brand,
     size: Faker::Number.between(from: 36, to: 46), # Assuming sizes are between 36 and 46
     condition: ['new', 'used', 'worn'].sample, # Randomly select a condition
@@ -23,6 +23,5 @@ Shoe.destroy_all
     shoe_url: "https://cdn.thewirecutter.com/wp-content/media/2024/05/running-shoes-2048px-9718.jpg", # Generate a random URL
     user_id: User.first.id # Associate the first user (or create your own user)
   )
-  shoe.save
   puts "Created shoe: #{shoe.brand}, Size: #{shoe.size}, Price per day: $#{shoe.price_per_day}"
 end
