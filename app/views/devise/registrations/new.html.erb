@@ -12,11 +12,11 @@
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "last name" }%>
-    <%= f.input :age,
+    <%=f.input :date_of_birth,
+                as: :string,
                 required: true,
                 autofocus: true,
-                html5: true,
-                input_html: { autocomplete: "date of birth" }%>
+                input_html: { data: { controller: "datepicker" } }%>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
