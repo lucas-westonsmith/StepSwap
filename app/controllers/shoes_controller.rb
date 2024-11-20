@@ -46,11 +46,11 @@ class ShoesController < ApplicationController
 
   def destroy
     @shoe.destroy
-    redirect_to shoes_url, notice: 'Your shoe has been successfully removed from the listings.'
+    redirect_to my_list_shoes_path, notice: 'Your shoe has been successfully removed from the listings.'
   end
 
   def my_list
-      @shoes = current_user.shoes
+    @shoes = current_user.shoes
   end
 
   private
@@ -60,7 +60,7 @@ class ShoesController < ApplicationController
   end
 
   def shoe_params
-    params.require(:shoe).permit(:brand, :size, :condition, :price_per_day, :description, :availability, :shoe_url)
+    params.require(:shoe).permit(:brand, :size, :condition, :price_per_day, :description, :availability, :shoe_url, :title)
   end
 
   def authorize_shoe_owner!
