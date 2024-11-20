@@ -20,7 +20,7 @@
   border-width: 1px;
   border: solid;
   transition: 0s color;
-  background-color: #6e2df0cc;
+  background-color: #A379F6;
   color: white;
   border-color: #6925f1;
   padding-top: 10px;
@@ -29,4 +29,13 @@
 .send-button:hover{
   background-color: #6E2DF0;
   color: white;
+}
+
+.btn.btn-success.btn-sm{
+  border-radius: 5px;
+  background-color: #A379F6;
+}
+
+.btn.btn-success.btn-sm:hover{
+  background-color:#6E2DF0 ;
 }
