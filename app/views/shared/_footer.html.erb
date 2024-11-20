@@ -1,12 +1,38 @@
-  <div class="footer">
-    <div class="footer-links">
-      <a href="https://github.com/lucas-westonsmith/StepSwap" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://www.instagram.com/lewagonportugal/" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.facebook.com/lewagonfrance/?brand_redir=1544432682516659" target="_blank"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.linkedin.com/showcase/lewagonportugal/?originalSubdomain=pt" target="_blank"><i class="fab fa-linkedin"></i></a>
+<div class="footer">
+  <div class="footer-links">
+    <a href="https://github.com/lucas-westonsmith/StepSwap" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://www.instagram.com/lewagonportugal/" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.facebook.com/lewagonfrance/?brand_redir=1544432682516659" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.linkedin.com/showcase/lewagonportugal/?originalSubdomain=pt" target="_blank"><i class="fab fa-linkedin"></i></a>
+  </div>
+
+  <!-- Ajout des liens du footer avec trois colonnes -->
+  <div class="footer-columns">
+    <div class="footer-column">
+      <h5><%= link_to "Home", root_path, class: "footer-link" %></h5>
+      <% if user_signed_in? %>
+        <h5><%= link_to "Profile", profile_path, class: "footer-link" %></h5>
+        <h5><%= link_to "Log out", destroy_user_session_path, class: "footer-link", data: { turbo_method: :delete } %></h5>
+      <% else %>
+        <h5><%= link_to "Login", new_user_session_path, class: "footer-link" %></h5>
+      <% end %>
     </div>
-    <div class="footer-copyright">
-      This website has been coded by Artur, Rafael and Lucas at Le Wagon
+
+    <div class="footer-column">
+      <h5><%= link_to "Browse shoes", shoes_path, class: "footer-link" %></h5>
+      <h5><%= link_to "My bookings", bookings_path, class: "footer-link" %></h5>
+      <h5><%= link_to "Wishlist", root_path, class: "footer-link" %></h5>
+    </div>
+
+    <div class="footer-column">
+      <h5><%= link_to "My Shop", my_list_shoes_path, class: "footer-link" %></h5>
+      <h5><%= link_to "Add to Marketplace", new_shoe_path, class: "footer-link" %></h5>
     </div>
   </div>
+
+  <!-- Copyright -->
+  <div class="footer-copyright">
+    This website has been coded by Artur, Rafael, and Lucas at Le Wagon
+  </div>
 </div>
+

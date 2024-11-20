@@ -14,11 +14,26 @@
     color: white !important; // Liens en blanc
     font-weight: normal;      // Retirer le gras des liens par défaut
     margin-right: 15px;       // Ajoute de l'espace entre les boutons (par défaut)
+    padding: 8px 12px;        // Ajuste légèrement le padding pour une meilleure réactivité au clic
+    position: relative;       // Pour positionner des éléments supplémentaires si nécessaire
+    transition: color 0.3s ease, background-color 0.3s ease;  // Transition fluide pour la couleur et le fond
   }
 
+  /* Effet hover amélioré */
   .nav-link:hover {
-    color: #ddd !important; // Légère nuance de gris au survol
+    color: #ddd !important;  // Légère nuance de gris au survol
+    background-color: rgba(255, 255, 255, 0.1); // Ajout d'un fond transparent pour le survol
+    border-radius: 5px; // Pour arrondir légèrement les coins sur hover
   }
+
+  /* Mettre en surbrillance le lien actif */
+  .nav-link.active {
+    color: white !important;  // Garde le texte en blanc
+    background-color: rgba(255, 255, 255, 0.15); // Fond semi-transparent avec du blanc
+    border-radius: 5px;  // Bord arrondi
+    font-weight: bold;  // Garder le texte en gras
+  }
+
 
   /* Groupe Home proche du logo */
   .nav-home {

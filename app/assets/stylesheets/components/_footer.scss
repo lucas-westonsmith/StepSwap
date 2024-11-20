@@ -1,32 +1,65 @@
 .footer {
   background: black;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 150px;
-  padding: 0px 50px;
+  padding: 15px 50px;  // Hauteur réduite du footer
+  width: 100%;
   color: rgba(255, 255, 255, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .footer-links {
   display: flex;
-  align-items: center;
+  justify-content: center;
+  gap: 20px;  // Espacement légèrement augmenté entre les icônes
+  margin-bottom: 15px;  // Espacement sous les icônes
 }
 
 .footer-links a {
   color: white;
   opacity: 0.5;
   text-decoration: none;
-  font-size: 24px;
+  font-size: 28px;  // Augmentation de la taille des icônes
   padding: 0px 10px;
-  transition: opacity 0.3s ease; /* Smooth transition on hover */
+  transition: opacity 0.3s ease;
 }
 
 .footer-links a:hover {
   opacity: 1;
 }
 
-.footer-copyright {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.8);
+.footer-columns {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1000px;
+  margin-bottom: 15px;
 }
+
+.footer-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;  // Réduction de l'écart entre les éléments de chaque colonne
+  text-align: center;
+}
+
+.footer-link {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.footer-link:hover {
+  opacity: 1;
+}
+
+.footer-copyright {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  margin-top: 10px;
+}
+

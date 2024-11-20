@@ -8,26 +8,25 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <!-- Groupe Home proche du logo -->
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item nav-home">
-          <%= link_to "Home", root_path, class: "nav-link text-white" %>
-        </li>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-        <!-- Groupe "Browse Shoes", "My Reservations", "Wishlist" -->
-        <li class="nav-item nav-group">
-          <%= link_to "Browse shoes", shoes_path, class: "nav-link text-white" %>
-          <%= link_to "My bookings", bookings_path, class: "nav-link text-white" %>
-          <%= link_to "Wishlist", root_path, class: "nav-link text-white" %>
-        </li>
+  <ul class="navbar-nav me-auto">
+  <li class="nav-item nav-home">
+    <%= link_to "Home", root_path, class: "nav-link #{'active' if current_page?(root_path)}" %>
+  </li>
 
-        <!-- Groupe "My Listings" et "Publish a Listing" -->
-        <li class="nav-item nav-actions">
-          <%= link_to "My Shop", my_list_shoes_path, class: "nav-link text-white" %>
-          <%= link_to "Add to Marketplace", new_shoe_path, class: "nav-link text-white" %>
-        </li>
-      </ul>
+  <li class="nav-item nav-group">
+    <%= link_to "Browse shoes", shoes_path, class: "nav-link #{'active' if current_page?(shoes_path)}" %>
+    <%= link_to "My bookings", bookings_path, class: "nav-link #{'active' if current_page?(bookings_path)}" %>
+    <%= link_to "Wishlist", root_path, class: "nav-link #{'active' if current_page?(root_path)}" %>
+  </li>
+
+  <li class="nav-item nav-actions">
+    <%= link_to "My Shop", my_list_shoes_path, class: "nav-link #{'active' if current_page?(my_list_shoes_path)}" %>
+    <%= link_to "Add to Marketplace", new_shoe_path, class: "nav-link #{'active' if current_page?(new_shoe_path)}" %>
+  </li>
+</ul>
+
 
 <!-- Authentification: Login ou Avatar -->
 <ul class="navbar-nav">
