@@ -6,17 +6,19 @@
       <div class="col-md-4 mb-4">
         <div class="card shadow-sm h-100" style="border-radius: 8px;">
           <!-- Image of the shoe -->
-          <% if booking.shoe.shoe_url.present? %>
-            <img
-              src="<%= booking.shoe.shoe_url %>"
-              alt="<%= booking.shoe.brand %>"
-              class="card-img-top"
-              style="object-fit: cover; height: 200px; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+          <% if booking.shoe.photo.attached? %>
+            <%= cl_image_tag booking.shoe.photo.key,
+                             transformation: { width: 300, height: 300, crop: :fill },
+                             alt: booking.shoe.title,
+                             title: booking.shoe.title,
+                             class: 'card-img-top',
+                             style: 'object-fit: cover; height: 200px; border-top-left-radius: 8px; border-top-right-radius: 8px;' %>
           <% else %>
-            <div class="card-img-top bg-secondary d-flex justify-content-center align-items-center text-white"
-                 style="height: 200px; border-top-left-radius: 8px; border-top-right-radius: 8px;">
-              No Image Available
-            </div>
+            <img src="<%= asset_path('default-image.jpg') %>"
+                 alt="<%= booking.shoe.title %>"
+                 title="<%= booking.shoe.title %>"
+                 class="card-img-top"
+                 style="object-fit: cover; height: 200px; border-top-left-radius: 8px; border-top-right-radius: 8px;">
           <% end %>
 
           <div class="card-body">
@@ -33,3 +35,4 @@
     <% end %>
   </div>
 </div>
+
