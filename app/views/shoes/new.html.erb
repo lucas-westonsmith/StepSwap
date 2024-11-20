@@ -1,10 +1,10 @@
-<div class="container">
+<div class="class = create-account">
   <h1>New Shoe</h1>
-
-  <div class="shoe-form">
+</div>
+  <div style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
     <%= simple_form_for @shoe, url: shoes_path, local: true do |f| %>
       <!-- Title -->
-      <%= f.input :title, as: :string, label: "Title", required: true, input_html: { class: "form-control" } %>
+      <strong><%= f.input :title, as: :string, label: "Title", required: true, input_html: { class: "form-control" } %></strong>
 
       <!-- Brand -->
       <%= f.input :brand, as: :string, label: "Brand", required: true, input_html: { class: "form-control" } %>
@@ -24,8 +24,8 @@
       <%= f.input :photo, as: :file %>
 
       <!-- Submit Button -->
-      <div class="form-group">
-        <%= f.submit 'Confirm creation', class: 'btn btn-primary' %>
+      <div class="signup-form" style="display: flex; flex-direction: row; align-items: center; justify-content: center;"">
+        <%= f.submit 'Confirm creation', class:"confirm-creation-button" %>
       </div>
     <% end %>
   </div>

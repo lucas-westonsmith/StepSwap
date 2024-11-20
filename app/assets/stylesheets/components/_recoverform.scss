@@ -11,3 +11,22 @@
 .back{
   margin-top: 25px;
 }
+
+.btn.send-button{
+  width: 85px;
+  height: 45px;
+  text-align: center;
+  border-radius: 5px;
+  border-width: 1px;
+  border: solid;
+  transition: 0s color;
+  background-color: #6e2df0cc;
+  color: white;
+  border-color: #6925f1;
+  padding-top: 10px;
+}
+
+.send-button:hover{
+  background-color: #6E2DF0;
+  color: white;
+}
