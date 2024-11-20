@@ -6,7 +6,20 @@
       <div class="col-md-4 mb-4">
         <div class="card shadow-sm" style="height: 100%; border-radius: 8px;">
           <!-- Image of the shoe -->
-          <img class="card-img-top" src="<%= shoe.shoe_url || 'default-image.jpg' %>" alt="<%= shoe.brand %>" style="border-top-left-radius: 8px; border-top-right-radius: 8px;">
+          <% if shoe.photo.attached? %>
+            <%= cl_image_tag shoe.photo.key,
+                             transformation: { width: 300, height: 200, crop: :fill },
+                             class: "card-img-top",
+                             style: "object-fit: cover; height: 200px; border-top-left-radius: 8px; border-top-right-radius: 8px;",
+                             alt: shoe.title,
+                             title: shoe.title %>
+          <% else %>
+            <img class="card-img-top"
+            src="<%= asset_path('default-image.jpg') %>"
+            alt="<%= shoe.title %>"
+            title="<%= shoe.title %>"
+            style="object-fit: cover; height: 200px; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+          <% end %>
 
           <div class="card-body">
             <h5 class="card-title"><%= shoe.title %></h5>

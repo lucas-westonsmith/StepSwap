@@ -10,7 +10,7 @@
                      transformation: { width: 300, height: 300, crop: :fill },
                      title: @shoe.title %>
   <% else %>
-    <img src="default-image.jpg" alt="<%=@shoe.title%>" title="<%=@shoe.title%>">
+    <img src="<%= asset_path('default-image.jpg') %>" alt="<%= @shoe.title %>" title="<%= @shoe.title %>">
   <% end %>
 </div>
 

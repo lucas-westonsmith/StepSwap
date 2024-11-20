@@ -6,18 +6,19 @@
       <div class="col-md-4 mb-4">
         <div class="card shadow-sm h-100" style="border-radius: 8px;">
           <!-- Image of the shoe -->
-          <% if shoe.shoe_url.present? %>
-            <img
-              src="<%= shoe.shoe_url %>"
-              alt="<%= shoe.brand %>"
-              class="card-img-top"
-              style="object-fit: cover; height: 200px; border-top-left-radius: 8px; border-top-right-radius: 8px;">
-          <% else %>
-            <div class="card-img-top bg-secondary d-flex justify-content-center align-items-center text-white"
-                 style="height: 200px; border-top-left-radius: 8px; border-top-right-radius: 8px;">
-              No Image Available
-            </div>
-          <% end %>
+    <% if shoe.photo.attached? %>
+          <%= cl_image_tag shoe.photo.key,
+                           transformation: { width: 300, height: 200, crop: :fill },
+                           class: "card-img-top",
+                           style: "object-fit: cover; height: 200px; border-top-left-radius: 8px; border-top-right-radius: 8px;",
+                           alt: shoe.title,
+                           title: shoe.title %>
+        <% else %>
+          <!-- Display default image when no photo is attached -->
+          <%= image_tag(asset_path('default-image.jpg'), alt: shoe.title, title: shoe.title,
+                  class: "card-img-top",
+                  style: "object-fit: cover; height: 200px; border-top-left-radius: 8px; border-top-right-radius: 8px;") %>
+        <% end %>
 
           <div class="card-body">
             <h5 class="card-title"><%= shoe.title %></h5>
