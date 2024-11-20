@@ -1,0 +1,82 @@
+/* Card style for the filter form */
+.filter-form {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 400px;
+  margin: 20px auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Filter form title */
+.filter-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Form group layout */
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Form labels */
+.form-label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+/* Select and input fields */
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Filter button */
+.btn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  color: #fff;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #007bff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive styling */
+@media (max-width: 500px) {
+  .filter-form {
+    padding: 15px;
+  }
+  .form-group {
+    margin-bottom: 10px;
+  }
+}

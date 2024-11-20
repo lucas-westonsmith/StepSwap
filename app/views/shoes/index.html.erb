@@ -1,6 +1,8 @@
 <div class="container my-5">
   <h1 class="mb-4 text-center">Available Shoes for Rent</h1>
 
+    <%= render 'filter_form' %>
+
   <div class="shoe-list row">
     <% @shoes.each do |shoe| %>
       <div class="col-md-4 mb-4">
@@ -31,10 +33,7 @@
             </p>
 
             <div class="d-flex justify-content-between">
-              <%= link_to 'View Details', shoe_path(shoe), class: 'btn btn-outline-primary btn-sm' %>
-              <% if user_signed_in? && shoe.availability %>
-                <%= link_to 'Book Now', new_shoe_booking_path(shoe), class: 'btn btn-outline-success btn-sm' %>
-              <% end %>
+              <%= link_to 'View Details', shoe_path(shoe), class: 'btn btn-success btn-sm' %>
             </div>
           </div>
 
