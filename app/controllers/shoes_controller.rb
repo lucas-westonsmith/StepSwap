@@ -1,5 +1,5 @@
 class ShoesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :my_list]
   before_action :set_shoe, only: [:show, :edit, :update, :destroy]
   before_action :authorize_shoe_owner!, only: [:edit, :update, :destroy]
 
