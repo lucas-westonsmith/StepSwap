@@ -1,4 +1,16 @@
 .signup-form{
-  padding-bottom: 50px;
+  padding-bottom: 25px;
   padding-top: 25px;
+}
+
+.form-label.email.required{
+  font-weight: bold;
+}
+
+.form-label.tel.required{
+  font-weight: bold;
+}
+
+.form-label.password.required{
+  font-weight: bold;
 }

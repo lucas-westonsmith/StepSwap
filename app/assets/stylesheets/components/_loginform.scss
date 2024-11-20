@@ -50,30 +50,6 @@
   width: 500px;
 }
 
-.form-label.string.required{
-  color: black;
-}
-
-.form-label.text.optional{
-  color: black;
-}
-
-.form-label.select.required{
-  color: black;
-}
-
-.form-label.integer.required{
-  color: black;
-}
-
-.form-label.decimal.required{
-  color: black;
-}
-
-.form-label.file.optional{
-  color: black;
-}
-
 .form-control.string.required.flatpickr-input{
   justify-items: center;
 }
@@ -114,4 +90,17 @@
 .update-button:hover{
   background-color: #6E2DF0;
   color: white;
+}
+
+#new_user.simple_form.new_user{
+  border-style: solid;
+  border-radius: 5px;
+  border-color: #ccc;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.contentonly{
+  background-color: #F9FAFB;
 }
