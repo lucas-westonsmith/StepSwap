@@ -2,3 +2,27 @@
   padding-top: 25px;
   text-align: center;
 }
+
+.form-label.select.required{
+  font-weight: bold;
+}
+
+.form-label.integer.required{
+  font-weight: bold;
+}
+
+.form-label.decimal.required{
+  font-weight: bold;
+}
+
+.form-label.text.optional{
+  font-weight: bold;
+}
+
+.form-label.string.required{
+  font-weight: bold;
+}
+
+.form-label.file.optional{
+  font-weight: bold;
+}
