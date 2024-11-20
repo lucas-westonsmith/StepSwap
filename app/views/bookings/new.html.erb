@@ -1,5 +1,6 @@
-<div class="container">
-  <h1>Book <%= @shoe.brand %></h1>
+<div class = sign-in><h1>Book <%= @shoe.brand %></h1></div>
+<div class="login-form" style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
+
 
   <div class="booking-form">
     <%= simple_form_for @booking, url: shoe_bookings_path(@shoe), local: true do |f| %>
@@ -10,8 +11,8 @@
       </div>
 
       <!-- Booking Dates -->
-      <%= f.input :start_date, as: :date, label: "Start Date", required: true, input_html: { class: "form-control" } %>
-      <%= f.input :end_date, as: :date, label: "End Date", required: true, input_html: { class: "form-control" } %>
+      <%=f.input :start_date, as: :string, required: true, autofocus: true, input_html: { data: {autocomplete: "start date", controller: "datepicker" } }%>
+      <%=f.input :end_date, as: :string, required: true, autofocus: true, input_html: { data: {autocomplete: "end date", controller: "datepicker" } }%>
 
       <!-- Message Field -->
       <%= f.input :message, as: :text, label: "Message (Optional)", input_html: { class: "form-control", placeholder: "Leave a message or special request for the booking" } %>
@@ -30,4 +31,6 @@
       </div>
     <% end %>
   </div>
+  </div>
 </div>
+

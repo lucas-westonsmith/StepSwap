@@ -25,7 +25,7 @@
         <p><strong>Availability:</strong> <%= @shoe.availability ? 'Available' : 'Not Available' %></p>
       </div>
 
-      <!-- Booking Form Section -->
+
       <div class="form-section">
         <% if user_signed_in? && @shoe.availability %>
           <h2>Check the price</h2>
@@ -64,10 +64,6 @@
     <p>No reviews yet</p>
   </div>
 </div>
-
-<script>
-  // JavaScript for Total Price Calculation (same as provided)
-</script>
 
 <!-- Add JavaScript for Total Price Calculation -->
 <script>

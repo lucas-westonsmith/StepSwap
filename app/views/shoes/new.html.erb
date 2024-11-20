@@ -1,14 +1,26 @@
 <div class="container">
-  <h1>New shoe</h1>
+  <h1>New Shoe</h1>
 
   <div class="shoe-form">
     <%= simple_form_for @shoe, url: shoes_path, local: true do |f| %>
-      <!-- Booking Dates -->
+      <!-- Title -->
+      <%= f.input :title, as: :string, label: "Title", required: true, input_html: { class: "form-control" } %>
+
+      <!-- Brand -->
       <%= f.input :brand, as: :string, label: "Brand", required: true, input_html: { class: "form-control" } %>
+
+      <!-- Size -->
       <%= f.input :size, as: :integer, label: "Size", required: true, input_html: { class: "form-control" } %>
-      <%= f.input :condition, as: :string, label: "Condition", input_html: { class: "form-control" } %>
+
+      <!-- Condition (Dropdown) -->
+      <%= f.input :condition, as: :select, label: "Condition", collection: ['New', 'Like New', 'Used', 'Worn'], input_html: { class: "form-control" }, include_blank: 'Select Condition' %>
+
+      <!-- Price per day -->
       <%= f.input :price_per_day, as: :decimal, label: "Price per day", input_html: { class: "form-control" } %>
+
+      <!-- Description -->
       <%= f.input :description, as: :text, label: "Description (optional)", input_html: { class: "form-control" } %>
+      <!-- Shoe Image -->
       <%= f.input :photo, as: :file %>
 
       <!-- Submit Button -->
