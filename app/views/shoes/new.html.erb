@@ -20,9 +20,8 @@
 
       <!-- Description -->
       <%= f.input :description, as: :text, label: "Description (optional)", input_html: { class: "form-control" } %>
-
-      <!-- Shoe Image Link -->
-      <%= f.input :shoe_url, as: :string, label: "Link to shoe image", input_html: { class: "form-control" } %>
+      <!-- Shoe Image -->
+      <%= f.input :photo, as: :file %>
 
       <!-- Submit Button -->
       <div class="form-group">
