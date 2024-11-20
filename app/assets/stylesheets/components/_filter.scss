@@ -1,82 +1,91 @@
-/* Card style for the filter form */
+/* Horizontal Filter Form */
 .filter-form {
-  background: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  background: #f8f9fa;
+  padding: 20px;
   border: 1px solid #ddd;
   border-radius: 8px;
-  padding: 20px;
-  max-width: 400px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  max-width: 1000px;
   margin: 20px auto;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  gap: 15px;
 }
 
-/* Filter form title */
-.filter-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 15px;
-  color: #333;
-}
-
-/* Form group layout */
-.form-group {
-  margin-bottom: 15px;
+/* Individual filter group */
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+  min-width: 150px;
 }
 
 /* Form labels */
-.form-label {
-  display: block;
-  font-size: 0.9rem;
+.filter-group label {
+  font-size: 0.85rem;
   font-weight: bold;
-  margin-bottom: 5px;
   color: #555;
+  margin-bottom: 5px;
 }
 
 /* Select and input fields */
-.form-input,
-.form-select {
+.filter-group select,
+.filter-group input {
   width: 100%;
-  padding: 10px;
+  padding: 8px;
+  font-size: 0.9rem;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 0.95rem;
-  transition: border-color 0.2s ease-in-out;
+  transition: border-color 0.3s ease-in-out;
 }
 
-.form-input:focus,
-.form-select:focus {
+.filter-group select:focus,
+.filter-group input:focus {
   border-color: #007bff;
   outline: none;
 }
 
-/* Filter button */
-.btn {
-  display: block;
-  width: 100%;
-  padding: 12px;
+/* Submit button */
+.filter-submit {
+  display: inline-block;
+  padding: 10px 20px;
   font-size: 1rem;
+  font-weight: bold;
   color: #fff;
-  text-align: center;
+  background-color: #007bff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  background-color: #A379F6;
 }
 
-.btn-primary {
-  background-color: #007bff;
-}
-
-.btn-primary:hover {
+.filter-submit:hover {
   background-color: #0056b3;
 }
 
-/* Responsive styling */
-@media (max-width: 500px) {
+/* Responsive Design */
+@media (max-width: 768px) {
   .filter-form {
-    padding: 15px;
+    flex-direction: column;
+    align-items: stretch;
   }
-  .form-group {
-    margin-bottom: 10px;
+
+  .filter-group {
+    min-width: unset;
+    width: 100%;
   }
+
+  .filter-submit {
+    width: 100%;
+  }
+}
+
+
+.icon {
+  font-size: 26px;
+  color: #6E2DF0;
 }
