@@ -1,0 +1,30 @@
+<%= form_with url: filter_shoes_path, method: :get, local: true, class: 'filter-form card' do |f| %>
+  <h2 class="filter-title">Filter Shoes</h2>
+  <div class="filter-options">
+    <div class="form-group">
+      <%= f.label :brand, 'Brand', class: 'form-label' %>
+      <%= f.select :brand, options_for_select(['', 'Adidas', 'Asics', 'Balenciaga', 'Birkenstock', 'Brooks', 'Clarks', 'Columbia', 'Converse', 'Dr. Martens', 'Fila', 'Gucci', 'Hoka One One', 'Jordan', 'Keen', 'Lacoste', 'Merrell', 'Mizuno', 'New Balance', 'Nike', 'Puma', 'Reebok', 'Salomon', 'Saucony', 'Skechers', 'The North Face', 'Timberland', 'Under Armour', 'Vans', 'Prada']
+), include_blank: true, class: 'form-select' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :size, 'Size', class: 'form-label' %>
+      <%= f.select :size, options_for_select([36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46]
+), include_blank: true, class: 'form-select' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :max_price, 'Max Price', class: 'form-label' %>
+      <%= f.number_field :max_price, step: 0.01, min: 0, class: 'form-input' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :sort_price, 'Sort by price', class: 'form-label' %>
+      <%= f.select :sort_price, options_for_select([['Low to High', 'asc'], ['High to Low', 'desc']]), include_blank: true, class: 'form-select' %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit 'Filter', class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>
