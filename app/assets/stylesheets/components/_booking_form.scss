@@ -1,5 +1,38 @@
 .booking-form{
   padding-bottom: 25px;
   padding-top: 25px;
-  width: 450px;
+  width: 500px;
+}
+
+.form-label.string.required{
+  font-weight: bolder;
+}
+
+.form-label.text.optional{
+  font-weight: bolder;
+}
+
+.form-label.select.required{
+  font-weight: bolder;
+}
+
+.form-control.string.required.flatpickr-input{
+  justify-items: center;
+}
+
+.confirm-button{
+  justify-content: center;
+  width:150px;
+  border-width: 1.5px;
+  border-radius: 4px;
+  height: 40px;
+  text-decoration: none;
+  padding-top: 5px;
+  background-color: #6e2df0cc;
+  color: white;
+  border-color: #6925f1;
+}
+
+.confirm-button:hover{
+  background-color: #6E2DF0;
 }
