@@ -25,7 +25,7 @@
     </div>
 
     <div class="sign-in">
-      <%= f.button :submit, "Update", class: "loginmenu-button" %>
+      <%= f.button :submit, "Update", class: "update-button" %>
     </div>
   <% end %>
 </div>
@@ -35,6 +35,6 @@
 </div>
 
 <div class="login-form" style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
-  <%= button_to "Delete", registration_path(resource_name), class: "loginmenu-button", data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %>
+  <%= button_to "Delete", registration_path(resource_name), class: "delete-button", data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %>
   <%= link_to "Back", :back, class: "links" %>
 </div>
