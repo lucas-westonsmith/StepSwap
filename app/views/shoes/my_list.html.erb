@@ -30,13 +30,13 @@
             </p>
             <div class="d-flex justify-content-between">
               <!-- Edit Button -->
-              <%= link_to edit_shoe_path(shoe), class: 'btn btn-outline-success' do %>
-                <i class="fas fa-pencil-alt"></i> Edit
+              <%= link_to edit_shoe_path(shoe) do %>
+                <i class="fas fa-pencil-alt icon"></i>
               <% end %>
 
               <!-- Delete Button -->
-             <%= link_to shoe_path(shoe), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this shoe from your list?" }, class: 'btn btn-success' do %>
-                <i class="fas fa-trash trash-button"></i>  <!-- Font Awesome Trash Icon -->
+             <%= link_to shoe_path(shoe), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this shoe from your list?" } do %>
+                <i class="fas fa-trash trash-button icon"></i>  <!-- Font Awesome Trash Icon -->
             <% end %>
 
             </div>
