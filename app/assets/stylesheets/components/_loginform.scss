@@ -7,3 +7,25 @@
   padding-bottom: 25px;
   padding-top: 25px;
 }
+
+.loginmenu-button {
+  text-align: center;
+  width:85px;
+  border-radius: 5px;
+  border-width: 1px;
+  border: solid;
+  height: 40px;
+  transition: 0s color;
+  background-color: #6e2df0cc;
+  color: white;
+  border-color: #6925f1;
+}
+
+.loginmenu-button:hover{
+  background-color: #6E2DF0;
+  color: white;
+}
+
+.input.btn{
+  color: white;
+}

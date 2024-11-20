@@ -10,9 +10,12 @@
                 input_html: { autocomplete: "email" } %>
   </div>
 
-  <div class="loginmenu-button">
-    <%= f.button :submit, "Send" %>
-  </div><br>
-  <%= link_to "Back", :back %>
+  <div style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
+    <%= f.button :submit, "Send", class:"loginmenu-button" %>
+  </div>
+  <div style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
+    <p class="back">Press here to go  <%= link_to "back", :back %></p>
+  </div>
+</div>
 <% end %>
 </div>

@@ -18,10 +18,11 @@
       <%= f.input :avatar, as: :file, label: "Profile Picture", input_html: { accept: "image/*" } %>
 
     </div>
-    <div class="loginmenu-button">
-      <%= f.button :submit, "Sign up" %>
+    <div class="signup-form" style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
+      <%= f.button :submit, "Sign up",class: "loginmenu-button" %>
     </div><br>
-    <%= link_to "Back", :back %>
+    <div style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
+    <p>Press here to go  <%= link_to "back", :back %></p>
+    </div>
   <% end %>
 </div>
-
