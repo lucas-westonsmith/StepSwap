@@ -5,6 +5,7 @@
     <h1 style="color: white;">Step into style, anytime, anywhere</h1>
     <p style="color: white;">Discover the ultimate footwear rental platform</p>
     <p style="color: white;">Access high-end shoes for any occasion, without the commitment—style made easy, starting today</p>
+    <a href="/users/sign_up" class="btn btn-purple btn-sm mt-4">Join us</a>
   </div>
 </div>
 
@@ -31,9 +32,10 @@
     </div>
   </div>
 </div>
-  <!-- Image Slider Section -->
+
+<!-- Image Slider Section -->
 <div class="my-container">
-<h1>Check out the latest models</h1>
+  <h1 id="bigger">Check out the latest models</h1>
   <div class="image-container" id="slide3">
     <div class="image-slider">
       <div class="shadow-shoes"></div>
@@ -54,9 +56,7 @@
       <a href="/shoes"><img src="https://i.postimg.cc/9fMYK0NC/1.png"></a>
     </div>
   </div>
-
 </div>
-
 
 <!-- Black Section -->
 <div class="section black">
@@ -90,35 +90,89 @@
 <!-- Grey Section -->
 <div class="section grey">
   <div class="content">
-    <h1>What our users say</h1>
-    <p>"The shoes arrived on time, looked stunning, and made my event perfect!" — Emma, London</p>
-    <h2>Proud to partner with leading footwear brands</h2>
-    <div class="brand-logos">
-        <!-- Première série de logos -->
-        <img src="https://i.pinimg.com/originals/20/60/2d/20602d43cc993811e5a6bd1886af4f33.png" alt="Nike">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Adidas_logo.png" alt="Adidas">
-        <img src="https://www.step.org.uk/app/uploads/2018/07/Puma-logo-PNG-Transparent-Background.png" alt="Puma">
-        <img src="https://logodownload.org/wp-content/uploads/2017/06/reebok-logo-5.png" alt="Reebok">
-        <img src="https://images.seeklogo.com/logo-png/9/2/new-balance-logo-png_seeklogo-98723.png?v=638657143210000000" alt="New Balance">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Asics_Logo.svg/1200px-Asics_Logo.svg.png" alt="Asics">
-        <img src="https://heppo.com/cdn/shop/files/birkenstock.svg?v=1684328068&width=1600" alt="Birkenstock">
-        <img src="https://jhoutdoors.com/cdn/shop/collections/brand-image-4_6da466d0-aac1-4eb5-acd4-97462e3abd33_1200x1200.png?v=1666367141" alt="Hoka">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Vans-logo.svg/2560px-Vans-logo.svg.png" alt="Vans">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Converse_logo.svg/2560px-Converse_logo.svg.png" alt="Converse">
-        <!-- Deuxième série de logos (identique à la première) -->
-        <img src="https://i.pinimg.com/originals/20/60/2d/20602d43cc993811e5a6bd1886af4f33.png" alt="Nike">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Adidas_logo.png" alt="Adidas">
-        <img src="https://www.step.org.uk/app/uploads/2018/07/Puma-logo-PNG-Transparent-Background.png" alt="Puma">
-        <img src="https://logodownload.org/wp-content/uploads/2017/06/reebok-logo-5.png" alt="Reebok">
-        <img src="https://images.seeklogo.com/logo-png/9/2/new-balance-logo-png_seeklogo-98723.png?v=638657143210000000" alt="New Balance">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Asics_Logo.svg/1200px-Asics_Logo.svg.png" alt="Asics">
-        <img src="https://heppo.com/cdn/shop/files/birkenstock.svg?v=1684328068&width=1600" alt="Birkenstock">
-        <img src="https://jhoutdoors.com/cdn/shop/collections/brand-image-4_6da466d0-aac1-4eb5-acd4-97462e3abd33_1200x1200.png?v=1666367141" alt="Hoka">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Vans-logo.svg/2560px-Vans-logo.svg.png" alt="Vans">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Converse_logo.svg/2560px-Converse_logo.svg.png" alt="Converse">
+    <h1 id="lesser">What our users say</h1>
+    <div class="reviews-container">
+      <!-- Review 1 -->
+      <div class="review-box">
+        <div class="review-header">
+          <img class="avatar"
+              src="<%= asset_path('avatar1.jpg') %>"
+              alt="Emma">
+          <div class="review-details">
+            <p class="review-name">Emma, London</p>
+            <div class="stars">
+              <span>★★★★★</span>
+            </div>
+          </div>
+        </div>
+        <h3 class="review-title"><strong>Perfect for my event!</strong></h3>
+        <p class="review-description"><em>"The shoes arrived on time, looked stunning, and made my event perfect!"</em></p>
+      </div>
+
+      <!-- Review 2 -->
+      <div class="review-box">
+        <div class="review-header">
+          <img class="avatar"
+              src="<%= asset_path('avatar2.jpg') %>"
+              alt="John">
+          <div class="review-details">
+            <p class="review-name">John, New York</p>
+            <div class="stars">
+              <span>★★★★★</span>
+            </div>
+          </div>
+        </div>
+        <h3 class="review-title"><strong>Exceptional quality!</strong></h3>
+        <p class="review-description"><em>"The quality of the shoes was incredible, and the service was fast. I will definitely rent again!"</em></p>
+      </div>
+
+      <!-- Review 3 -->
+      <div class="review-box">
+        <div class="review-header">
+          <img class="avatar"
+              src="<%= asset_path('avatar3.jpg') %>"
+              alt="Sarah">
+          <div class="review-details">
+            <p class="review-name">Sarah, Paris</p>
+            <div class="stars">
+              <span>★★★★★</span>
+            </div>
+          </div>
+        </div>
+        <h3 class="review-title"><strong>Incredible experience</strong></h3>
+        <p class="review-description"><em>"Such a great idea! The shoes were exactly as described, and the convenience was unmatched."</em></p>
       </div>
     </div>
   </div>
+
+  <h2>Proud to partner with leading footwear brands</h2>
+  <div class="brand-logos">
+    <!-- Première série de logos -->
+    <img src="https://i.pinimg.com/originals/20/60/2d/20602d43cc993811e5a6bd1886af4f33.png" alt="Nike">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Adidas_logo.png" alt="Adidas">
+    <img src="https://www.step.org.uk/app/uploads/2018/07/Puma-logo-PNG-Transparent-Background.png" alt="Puma">
+    <img src="https://logodownload.org/wp-content/uploads/2017/06/reebok-logo-5.png" alt="Reebok">
+    <img src="https://images.seeklogo.com/logo-png/9/2/new-balance-logo-png_seeklogo-98723.png?v=638657143210000000" alt="New Balance">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Asics_Logo.svg/1200px-Asics_Logo.svg.png" alt="Asics">
+    <img src="https://heppo.com/cdn/shop/files/birkenstock.svg?v=1684328068&width=1600" alt="Birkenstock">
+    <img src="https://jhoutdoors.com/cdn/shop/collections/brand-image-4_6da466d0-aac1-4eb5-acd4-97462e3abd33_1200x1200.png?v=1666367141" alt="Hoka">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Vans-logo.svg/2560px-Vans-logo.svg.png" alt="Vans">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Converse_logo.svg/2560px-Converse_logo.svg.png" alt="Converse">
+    <!-- Deuxième série de logos (identique à la première) -->
+    <img src="https://i.pinimg.com/originals/20/60/2d/20602d43cc993811e5a6bd1886af4f33.png" alt="Nike">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Adidas_logo.png" alt="Adidas">
+    <img src="https://www.step.org.uk/app/uploads/2018/07/Puma-logo-PNG-Transparent-Background.png" alt="Puma">
+    <img src="https://logodownload.org/wp-content/uploads/2017/06/reebok-logo-5.png" alt="Reebok">
+    <img src="https://images.seeklogo.com/logo-png/9/2/new-balance-logo-png_seeklogo-98723.png?v=638657143210000000" alt="New Balance">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Asics_Logo.svg/1200px-Asics_Logo.svg.png" alt="Asics">
+    <img src="https://heppo.com/cdn/shop/files/birkenstock.svg?v=1684328068&width=1600" alt="Birkenstock">
+    <img src="https://jhoutdoors.com/cdn/shop/collections/brand-image-4_6da466d0-aac1-4eb5-acd4-97462e3abd33_1200x1200.png?v=1666367141" alt="Hoka">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Vans-logo.svg/2560px-Vans-logo.svg.png" alt="Vans">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Converse_logo.svg/2560px-Vans-logo.svg.png" alt="Converse">
+  </div>
+</div>
+
+
 
 
 <script>

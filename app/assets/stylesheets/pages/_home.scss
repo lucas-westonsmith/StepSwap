@@ -10,7 +10,7 @@
 
   &.gradient {
     background: rgb(0,0,0);
-    background: linear-gradient(360deg, rgba(0,0,0,1) 0%, rgba(12,12,103,1) 86%, rgba(72,13,191,1) 100%);
+    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(12,12,103,1) 50%, rgba(0,0,0,1) 100%);
 
     h1 {
       font-size: 70px; /* Specific font size for h1 in gradient section */
@@ -312,4 +312,91 @@
 	display: none;
 	transition: all 0.3s;
 
+}
+
+.reviews-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.review-box {
+  flex: 1;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.review-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.review-name {
+  font-weight: bold;
+}
+
+.stars {
+  text-align: right; /* Aligne le texte des étoiles à droite */
+  width: 100%; /* S'assure que le conteneur de l'étoile prend toute la largeur disponible */
+}
+
+.review-title {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.review-description {
+  margin-top: 10px;
+  font-size: 16px;
+  font-style: italic;
+  color: #555;
+}
+
+/* Personnalisation du bouton "Join us" */
+.btn-purple {
+  background-color: #480DBF;
+  color: white;
+  padding: 8px 20px;  /* Réduction des paddings pour réduire la taille */
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  display: inline-block;
+  width: auto;  /* Laisse la largeur automatique */
+}
+
+.btn-purple:hover {
+  background-color: #3c0ba4;
+}
+
+/* Personnalisation de l'espacement au-dessus du bouton */
+.section .content a.btn-sm {
+  margin-top: 30px;  /* Ajouter de l'espace au-dessus du bouton */
+}
+
+#bigger {
+  font-size: 48px;
+  padding-top: 80px;
+}
+
+#lesser {
+  padding-top: 0px;
 }

@@ -1,72 +1,99 @@
 .navbar-stepswap {
   justify-content: space-between;
   background: black;
+  padding: 10px 0;  // Taille réduite de la navbar
 
   .navbar-collapse {
     flex-grow: 0;
   }
 
   .navbar-brand img {
-    width: 100px;
+    width: 100px; // Taille modérée du logo
   }
 
   .nav-link {
     color: white !important; // Liens en blanc
     font-weight: normal;      // Retirer le gras des liens par défaut
-    margin-right: 15px;       // Ajoute de l'espace entre les boutons (par défaut)
-    padding: 8px 12px;        // Ajuste légèrement le padding pour une meilleure réactivité au clic
+    margin-right: 15px;       // Espace entre les boutons
+    padding: 8px 12px;        // Ajuste légèrement le padding
     position: relative;       // Pour positionner des éléments supplémentaires si nécessaire
-    transition: color 0.3s ease, background-color 0.3s ease;  // Transition fluide pour la couleur et le fond
+    transition: color 0.3s ease, background-color 0.3s ease;  // Transition fluide
   }
 
-  /* Effet hover amélioré */
+  /* Effet hover */
   .nav-link:hover {
-    color: #ddd !important;  // Légère nuance de gris au survol
-    background-color: rgba(255, 255, 255, 0.1); // Ajout d'un fond transparent pour le survol
-    border-radius: 5px; // Pour arrondir légèrement les coins sur hover
+    color: #ddd !important;  // Gris au survol
+    background-color: rgba(255, 255, 255, 0.1); // Fond transparent
+    border-radius: 5px; // Arrondir les coins sur hover
   }
 
   /* Mettre en surbrillance le lien actif */
   .nav-link.active {
-    color: white !important;  // Garde le texte en blanc
-    background-color: rgba(255, 255, 255, 0.15); // Fond semi-transparent avec du blanc
-    border-radius: 5px;  // Bord arrondi
-    font-weight: bold;  // Garder le texte en gras
+    color: white !important;
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 5px;
+    font-weight: bold;  // Texte en gras pour l'élément actif
   }
 
-
-  /* Groupe Home proche du logo */
+  /* Groupe Home */
   .nav-home {
     display: flex;
-    align-items: center; // Aligner verticalement le logo et "Home"
-    margin-right: 50px; // Espacement à droite pour séparer du deuxième groupe
+    align-items: center;
+    margin-right: 20px;  // Espacement modéré à droite
+    position: relative;
+
+    &::after {
+      content: "|";  // Ajouter le séparateur " | " après Home
+      position: absolute;
+      left: 100%;  // Placer le séparateur après le groupe "Home"
+      margin-left: 10px;  // Un petit espace avant le séparateur
+      font-size: 20px;
+      color: white;
+      top: 50%;  // Centrer verticalement le séparateur
+      transform: translateY(-50%); // Correction de l'alignement vertical
+    }
   }
 
-  /* Groupe "Browse Shoes", "My Reservations", "Wishlist" */
+  /* Groupe Browse Shoes, My Reservations, Wishlist */
   .nav-group {
     display: flex;
     gap: 15px;
-    margin-right: 50px; // Séparation avec le groupe précédent
+    margin-right: 20px; // Espacement modéré entre les groupes
+    position: relative;
+
+    &::after {
+      content: "|";  // Ajouter le séparateur " | " après chaque groupe sauf le dernier
+      position: absolute;
+      right: -12px;
+      font-size: 20px;
+      color: white;
+      top: 50%;  // Centrer verticalement le séparateur
+      transform: translateY(-50%); // Correction de l'alignement vertical
+    }
   }
 
-  /* Groupe "My Listings" et "Publish a Listing" */
+  /* Groupe My Shop, Add to Marketplace */
   .nav-actions {
     display: flex;
     gap: 15px;
-    margin-right: 50px; // Séparation avec le groupe précédent
+    position: relative;
+
+    &::after {
+      content: "";  // Pas de séparateur après le dernier groupe
+    }
   }
 
   /* Spécificité du bouton Login */
   .nav-link.login {
-    background-color: #480DBF; // Couleur du fond du bouton Login
-    color: white !important;    // Assurer que le texte soit blanc sur fond coloré
-    padding: 12px 30px;         // Plus de padding pour agrandir le bouton
-    border-radius: 5px;         // Arrondir les bords du bouton
-    font-weight: bold;          // Garder le texte en gras pour le bouton
+    background-color: #480DBF;
+    color: white !important;
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-weight: bold;
   }
 
   .nav-link.login:hover {
-    background-color: #3c0ba4; // Couleur au survol du bouton Login
+    background-color: #3c0ba4;  // Couleur du bouton Login au survol
   }
 
   /* Avatar */
