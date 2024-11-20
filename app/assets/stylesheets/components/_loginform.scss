@@ -7,3 +7,111 @@
   padding-bottom: 25px;
   padding-top: 25px;
 }
+
+.btn.loginmenu-button {
+  text-align: center;
+  width:110px;
+  height: 45px;
+  border-radius: 5px;
+  border-width: 1px;
+  border: solid;
+  transition: 0s color;
+  background-color: #6e2df0cc;
+  color: white;
+  border-color: #6925f1;
+  padding-top: 8px;
+}
+
+.confirm-creation-button {
+  text-align: center;
+  width: auto;
+  height: 43px;
+  border-radius: 5px;
+  border-width: 1px;
+  border: solid;
+  transition: 0s color;
+  background-color: #6e2df0cc;
+  color: white;
+  border-color: #6925f1;
+}
+
+.confirm-creation-button:hover{
+  background-color: #6E2DF0;
+  color: white;
+}
+
+.loginmenu-button:hover{
+  background-color: #6E2DF0;
+  color: white;
+}
+.booking-form{
+  padding-bottom: 25px;
+  padding-top: 25px;
+  width: 500px;
+}
+
+.form-label.string.required{
+  color: black;
+}
+
+.form-label.text.optional{
+  color: black;
+}
+
+.form-label.select.required{
+  color: black;
+}
+
+.form-label.integer.required{
+  color: black;
+}
+
+.form-label.decimal.required{
+  color: black;
+}
+
+.form-label.file.optional{
+  color: black;
+}
+
+.form-control.string.required.flatpickr-input{
+  justify-items: center;
+}
+
+.edit-button{
+  width:110px;
+  border-radius: 5px;
+  border-width: 1px;
+  text-align: center;
+  border: solid;
+  border-color: #6925f1;
+  background-color: #6e2df0cc;
+  height: 43px;
+  text-decoration: none;
+  color: white;
+  padding-top: 8px;
+}
+
+.edit-button:hover{
+  background-color: #6E2DF0;
+  color: white ;
+}
+
+.btn.update-button {
+  text-align: center;
+  width:110px;
+  height: 43px;
+  border-radius: 5px;
+  border-width: 1px;
+  border: solid;
+  transition: 0s color;
+  background-color: #6e2df0cc;
+  color: white;
+  border-color: #6925f1;
+  padding-top: 8px;
+}
+
+.update-button:hover{
+  background-color: #6E2DF0;
+  color: white;
+}
