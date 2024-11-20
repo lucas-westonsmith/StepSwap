@@ -1,16 +1,47 @@
-<div class="container">
-  <h1>Your Lists</h1>
+<div class="container my-5">
+  <h1 class="mb-4 text-center">My Shop</h1>
 
-  <ul class="shoes-list">
+  <div class="row">
     <% @shoes.each do |shoe| %>
-      <li class="shoes-item">
-        <p><strong>Brand:</strong> <%= shoe.brand %></p>
-        <p><strong>Size:</strong> <%= shoe.size %></p>
-        <p><strong>Condition:</strong> <%= shoe.condition %></p>
-        <p><strong>Price per day:</strong> <%= shoe.price_per_day %></p>
-        <p><strong>Image:</strong> </p>
-        <img src="<%= shoe.shoe_url %>" alt="<%= shoe.brand %>">
-      </li>
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-sm h-100" style="border-radius: 8px;">
+          <!-- Image of the shoe -->
+          <% if shoe.shoe_url.present? %>
+            <img
+              src="<%= shoe.shoe_url %>"
+              alt="<%= shoe.brand %>"
+              class="card-img-top"
+              style="object-fit: cover; height: 200px; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+          <% else %>
+            <div class="card-img-top bg-secondary d-flex justify-content-center align-items-center text-white"
+                 style="height: 200px; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+              No Image Available
+            </div>
+          <% end %>
+
+          <div class="card-body">
+            <h5 class="card-title"><%= shoe.title %></h5>
+            <p class="card-text mb-3">
+              <strong>Brand:</strong> <%= shoe.brand %><br>
+              <strong>Size:</strong> <%= shoe.size %><br>
+              <strong>Condition:</strong> <%= shoe.condition %><br>
+              <strong>Price per day:</strong> <%= shoe.price_per_day %>
+            </p>
+            <div class="d-flex justify-content-between">
+              <!-- Edit Button -->
+              <%= link_to edit_shoe_path(shoe), class: 'btn btn-outline-success' do %>
+                <i class="fas fa-pencil-alt"></i> Edit
+              <% end %>
+
+              <!-- Delete Button -->
+             <%= link_to shoe_path(shoe), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this shoe from your list?" }, class: 'btn btn-success' do %>
+                <i class="fas fa-trash trash-button"></i>  <!-- Font Awesome Trash Icon -->
+            <% end %>
+
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </ul>
+  </div>
 </div>

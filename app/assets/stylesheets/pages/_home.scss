@@ -307,48 +307,6 @@
 	}
 }
 
-
-
-
-
-
-
-.button-next-prev{
-	position: absolute;
-	-webkit-transform:translate(-50%,-50%);
-	cursor: pointer;
-	text-decoration: none;
-	  color: #fff;
-}
-.button-next-prev::before{
-	content: " ";
-	top: -3%;
-	position: absolute;
-	background: #6E2DF0;
-	padding: 1px;
-	transition: all 0.3s;
-	width: 0%;
-}
-.button-next-prev:hover::before{
-	top: 100%;
-	width: 100%;
-	transition: all 0.3s;
-}
-.next-btn{
-  font-family:arial;
-  font-weight:bold;
-	right: 10%;
-	top: 50%;
-}
-.prev-btn{
-  font-family:arial;
-  font-weight:bold;
-	top: 50%;
-	left: 10%;
-}
-
-
-
 .hide-slider{
 	-webkit-transform:scale(0.3,0.3) !important;
 	display: none;
