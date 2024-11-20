@@ -4,9 +4,16 @@
 
   <div class="main-content">
     <!-- Large Image Section -->
-    <div class="image-section">
-      <img src="<%= @shoe.shoe_url || 'default-image.jpg' %>" alt="<%= @shoe.brand %>">
-    </div>
+<div class="image-section">
+  <% if @shoe.photo.attached? %>
+    <%= cl_image_tag @shoe.photo.key,
+                     transformation: { width: 300, height: 300, crop: :fill },
+                     title: @shoe.title %>
+  <% else %>
+    <img src="default-image.jpg" alt="<%=@shoe.title%>" title="<%=@shoe.title%>">
+  <% end %>
+</div>
+
 
     <!-- Right-Side Details and Form Section -->
     <div class="right-section">
