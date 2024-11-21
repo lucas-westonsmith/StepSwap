@@ -8,5 +8,6 @@ class User < ApplicationRecord
          has_many :shoes
          has_many :reviews, dependent: :destroy
          has_one_attached :avatar
+         has_one :wishlist
 
 end

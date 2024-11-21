@@ -19,5 +19,7 @@
     <%= f.select :sort_price, options_for_select([['Low to High', 'asc'], ['High to Low', 'desc']]), include_blank: true %>
   </div>
 
-  <%= f.submit 'Filter', class: 'filter-submit' %>
+   <button type="submit" class="btn btn-success redondo">
+    <i class="fa-solid fa-magnifying-glass"></i>
+</button>
 <% end %>
