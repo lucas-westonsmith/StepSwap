@@ -1,82 +1,91 @@
 <div class="container my-5">
   <h1 class="mb-4 text-center">My Shop</h1>
 
-  <div class="row">
-    <% @shoes.each do |shoe| %>
-      <div class="col-12 mb-4">
-        <div class="card shadow-sm" style="border-radius: 8px; overflow: hidden;">
-          <div class="row g-0">
-            <!-- Shoe Image -->
-            <div class="col-md-4">
-              <% if shoe.photo.attached? %>
-                <%= cl_image_tag shoe.photo.key,
-                                 transformation: { width: 400, height: 300, crop: :fill },
-                                 class: "img-fluid h-100 w-100",
-                                 style: "object-fit: cover;",
-                                 alt: shoe.title,
-                                 title: shoe.title %>
-              <% else %>
-                <%= image_tag(asset_path('default-image.jpg'),
-                              alt: shoe.title,
-                              title: shoe.title,
-                              class: "img-fluid h-100 w-100",
-                              style: "object-fit: cover;") %>
-              <% end %>
-            </div>
+  <!-- Si aucune chaussure n'est présente dans le shop -->
+  <% if @shoes.empty? %>
+    <div class="empty-message">
+      <h2>Uh oh... your shop is EMPTY! 🛒</h2>
+      <p>Let's fill it with awesome shoes and start making some 💸! Ready to rock the shoe game? 👟🔥</p>
+      <%= link_to 'Add Shoes Now', new_shoe_path, class: 'empty-button' %> <!-- Lien vers la page d'ajout de chaussures -->
+    </div>
+  <% else %>
+    <!-- Si des chaussures sont présentes, afficher la liste -->
+    <div class="row">
+      <% @shoes.each do |shoe| %>
+        <div class="col-12 mb-4">
+          <div class="card shadow-sm" style="border-radius: 8px; overflow: hidden;">
+            <div class="row g-0">
+              <!-- Image de la chaussure -->
+              <div class="col-md-4">
+                <% if shoe.photo.attached? %>
+                  <%= cl_image_tag shoe.photo.key,
+                                   transformation: { width: 400, height: 300, crop: :fill },
+                                   class: "img-fluid h-100 w-100",
+                                   style: "object-fit: cover;",
+                                   alt: shoe.title,
+                                   title: shoe.title %>
+                <% else %>
+                  <%= image_tag(asset_path('default-image.jpg'),
+                                alt: shoe.title,
+                                title: shoe.title,
+                                class: "img-fluid h-100 w-100",
+                                style: "object-fit: cover;") %>
+                <% end %>
+              </div>
 
-            <!-- Shoe Details and Bookings -->
-            <div class="col-md-8">
-              <div class="card-body">
-                <h5 class="card-title"><%= shoe.title %></h5>
-                <p class="card-text">
-                  <strong>Brand:</strong> <%= shoe.brand %><br>
-                  <strong>Size:</strong> <%= shoe.size %><br>
-                  <strong>Condition:</strong> <%= shoe.condition %><br>
-                  <strong>Price per day:</strong> <%= number_to_currency(shoe.price_per_day) %>
-                </p>
+              <!-- Détails de la chaussure et réservations -->
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title"><%= shoe.title %></h5>
+                  <p class="card-text">
+                    <strong>Brand:</strong> <%= shoe.brand %><br>
+                    <strong>Size:</strong> <%= shoe.size %><br>
+                    <strong>Condition:</strong> <%= shoe.condition %><br>
+                    <strong>Price per day:</strong> <%= number_to_currency(shoe.price_per_day) %>
+                  </p>
 
-                <h6 class="mt-4">Bookings for this Shoe:</h6>
+                  <h6 class="mt-4">Bookings for this Shoe:</h6>
 
-                <% shoe.bookings.each do |booking| %>
-                  <div class="d-flex align-items-center justify-content-between border-top pt-2 mt-2">
-                    <div>
-                      <p class="mb-1">
-                        <strong>Booking ID:</strong> <%= booking.id %><br>
-                        <strong>Status:</strong> <%= booking.status.capitalize %><br>
-                        <strong>Requested by:</strong> <%= booking.user.email %>
-                      </p>
-                    </div>
-
-                    <!-- Action Buttons -->
-                    <% if booking.pending? %>
-                      <div class="d-flex">
-                        <!-- Accept Icon -->
-                        <%= button_to accept_shoe_booking_path(shoe.id, booking.id),
-                                      method: :patch,
-                                      class: 'btn btn-success btn-sm me-2',
-                                      title: 'Accept Booking',
-                                      data: { toggle: 'tooltip' } do %>
-                          <i class="fas fa-check"></i> <!-- Font Awesome check icon -->
-                        <% end %>
-
-                        <!-- Decline Icon -->
-                        <%= button_to decline_shoe_booking_path(shoe.id, booking.id),
-                                      method: :patch,
-                                      class: 'btn btn-danger btn-sm',
-                                      title: 'Decline Booking',
-                                      data: { toggle: 'tooltip' } do %>
-                          <i class="fas fa-times"></i> <!-- Font Awesome times icon -->
-                        <% end %>
+                  <% shoe.bookings.each do |booking| %>
+                    <div class="d-flex align-items-center justify-content-between border-top pt-2 mt-2">
+                      <div>
+                        <p class="mb-1">
+                          <strong>Booking ID:</strong> <%= booking.id %><br>
+                          <strong>Status:</strong> <%= booking.status.capitalize %><br>
+                          <strong>Requested by:</strong> <%= booking.user.email %>
+                        </p>
                       </div>
-                <% end %>
 
-                  </div>
-                <% end %>
+                      <!-- Boutons d'acceptation/refus de réservation -->
+                      <% if booking.pending? %>
+                        <div class="d-flex">
+                          <!-- Icone Accepter -->
+                          <%= button_to accept_shoe_booking_path(shoe.id, booking.id),
+                                        method: :patch,
+                                        class: 'btn btn-success btn-sm me-2',
+                                        title: 'Accept Booking',
+                                        data: { toggle: 'tooltip' } do %>
+                            <i class="fas fa-check"></i> <!-- Icône check -->
+                          <% end %>
+
+                          <!-- Icone Refuser -->
+                          <%= button_to decline_shoe_booking_path(shoe.id, booking.id),
+                                        method: :patch,
+                                        class: 'btn btn-danger btn-sm',
+                                        title: 'Decline Booking',
+                                        data: { toggle: 'tooltip' } do %>
+                            <i class="fas fa-times"></i> <!-- Icône de refus -->
+                          <% end %>
+                        </div>
+                      <% end %>
+                    </div>
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    <% end %>
-  </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
