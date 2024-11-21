@@ -25,7 +25,6 @@ class ShoesController < ApplicationController
   end
 
   def create
-    @shoe = current_user.shoes.build(shoe_params)
     if @shoe.save
       redirect_to @shoe, notice: 'Your shoe has been successfully listed for rent!'
     else
@@ -37,7 +36,7 @@ class ShoesController < ApplicationController
   end
 
   def update
-    if @shoe.update(shoe_params)
+    if @shoe.update(shoe_params)  
       redirect_to @shoe, notice: 'Your shoe details have been successfully updated!'
     else
       render :edit
@@ -60,7 +59,7 @@ class ShoesController < ApplicationController
   end
 
   def shoe_params
-    params.require(:shoe).permit(:brand, :size, :condition, :price_per_day, :description, :availability, :photo, :title)
+    params.require(:shoe).permit(:brand, :size, :condition, :price_per_day, :description, :photo, :title)
   end
 
   def authorize_shoe_owner!
