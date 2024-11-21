@@ -15,6 +15,11 @@ class ShoesController < ApplicationController
   end
   def show
     @reviews = @shoe.reviews.order(created_at: :desc)
+    @average_rating = if @reviews.any?
+      @reviews.average(:rating).round(1) # Moyenne arrondie à 1 décimal
+    else
+      0
+    end
   end
   def new
     @shoe = Shoe.new
