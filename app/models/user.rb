@@ -7,5 +7,6 @@ class User < ApplicationRecord
          has_many :bookings
          has_many :shoes
          has_one_attached :avatar
+         has_one :wishlist
 
 end

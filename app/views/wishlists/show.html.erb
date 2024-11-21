@@ -1,18 +1,16 @@
 <div class="container my-5">
-  <h1 class="mb-4 text-center">Available Shoes for Rent</h1>
-
-    <%= render 'filter_form' %>
+  <h1 class="mb-4 text-center">Your Wishlist</h1>
 
   <div class="shoe-list row">
-    <% @shoes.each do |shoe| %>
+    <% @wishlist.shoes.each do |shoe| %>
       <div class="col-md-4 mb-4">
-        <div class="card shadow-sm" style="height: 100%; border-radius: 14px;">
+        <div class="card shadow-sm" style="height: 100%; border-radius: 8px;">
           <!-- Image of the shoe -->
           <% if shoe.photo.attached? %>
             <%= cl_image_tag shoe.photo.key,
                              transformation: { width: 300, height: 200, crop: :fill },
                              class: "card-img-top",
-                             style: "object-fit: cover; height: 200px; border-top-left-radius: 14px; border-top-right-radius: 14px;",
+                             style: "object-fit: cover; height: 200px; border-top-left-radius: 8px; border-top-right-radius: 8px;",
                              alt: shoe.title,
                              title: shoe.title %>
           <% else %>
@@ -20,13 +18,12 @@
             src="<%= asset_path('default-image.jpg') %>"
             alt="<%= shoe.title %>"
             title="<%= shoe.title %>"
-            style="object-fit: cover; height: 200px; border-top-left-radius: 14px; border-top-right-radius: 14px;">
+            style="object-fit: cover; height: 200px; border-top-left-radius: 8px; border-top-right-radius: 8px;">
           <% end %>
 
           <div class="card-body">
             <h5 class="card-title"><%= shoe.title %></h5>
             <p class="card-text mb-3">
-              <strong>Brand:</strong> <%= shoe.brand %><br>
               <strong>Size:</strong> <%= shoe.size %><br>
               <strong>Condition:</strong> <%= shoe.condition.capitalize %><br>
               <strong>Price per Day:</strong> $<%= shoe.price_per_day %><br>
@@ -35,11 +32,7 @@
 
             <div class="d-flex justify-content-between">
               <%= link_to 'View Details', shoe_path(shoe), class: 'btn btn-success btn-sm' %>
-              <% if current_user.wishlist.shoes.include?(shoe) %>
-               <%= button_to 'Remove', remove_item_wishlists_path(shoe_id: shoe.id), method: :delete, class: 'btn btn-danger' %>
-              <% else %>
-              <%= button_to "Add to Wishlist", add_item_wishlists_path(shoe_id: shoe.id) %>
-              <% end %>
+              <%= button_to 'Remove', remove_item_wishlists_path(shoe_id: shoe.id), method: :delete, class: 'btn btn-danger' %>
             </div>
           </div>
 
