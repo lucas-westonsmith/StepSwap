@@ -17,7 +17,7 @@ class BookingsController < ApplicationController
     @booking.shoe = @shoe
 
     if @booking.save
-      redirect_to bookings_path, notice: 'Your booking request has been sent to the owner.'
+      redirect_to my_list_shoes_path, notice: 'Your booking request has been sent to the owner.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -41,17 +41,17 @@ class BookingsController < ApplicationController
 
   def accept
     if @booking.update(status: 'confirmed')
-      redirect_to bookings_path, notice: 'Booking was successfully accepted.'
+      redirect_to my_list_shoes_path, notice: 'Booking was successfully accepted.'
     else
-      redirect_to bookings_path, alert: 'Failed to accept the booking.'
+      redirect_to my_list_shoes_path, alert: 'Failed to accept the booking.'
     end
   end
 
   def decline
     if @booking.update(status: 'canceled')
-      redirect_to bookings_path, notice: 'Booking was successfully declined.'
+      redirect_to my_list_shoes_path, notice: 'Booking was successfully declined.'
     else
-      redirect_to bookings_path, alert: 'Failed to decline the booking.'
+      redirect_to my_list_shoes_path, alert: 'Failed to decline the booking.'
     end
   end
 
