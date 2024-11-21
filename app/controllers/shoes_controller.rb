@@ -18,6 +18,7 @@ class ShoesController < ApplicationController
   end
 
   def show
+    @reviews = @shoe.reviews.order(created_at: :desc)
   end
 
   def new
@@ -36,7 +37,7 @@ class ShoesController < ApplicationController
   end
 
   def update
-    if @shoe.update(shoe_params)  
+    if @shoe.update(shoe_params)
       redirect_to @shoe, notice: 'Your shoe details have been successfully updated!'
     else
       render :edit
