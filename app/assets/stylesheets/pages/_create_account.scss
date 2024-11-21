@@ -1,0 +1,27 @@
+// account creation form layout
+
+.create-account{
+  padding-top: 25px;
+  text-align: center;
+}
+
+.signup-form{
+  padding-bottom: 25px;
+  padding-top: 25px;
+}
+
+// account creation form card
+
+#new_user{
+  width: 350px;
+  padding: 50px, 100px;
+}
+
+#new_user.simple_form.new_user{
+  border-style: solid;
+  border-radius: 5px;
+  border-color: #ccc;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+}

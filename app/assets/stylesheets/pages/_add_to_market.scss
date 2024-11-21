@@ -1,0 +1,27 @@
+
+.new-shoe-title{
+  text-align: center;
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+
+// show creation button
+
+.confirm-creation-button {
+  text-align: center;
+  width: auto;
+  height: 43px;
+  border-radius: 5px;
+  border-width: 1px;
+  border: solid;
+  transition: 0s color;
+  background-color: #A379F6;
+  color: white;
+  border-color: #6925f1;
+}
+
+.confirm-creation-button:hover{
+  background-color: #6E2DF0;
+  color: white;
+}
