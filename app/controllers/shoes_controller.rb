@@ -18,6 +18,7 @@ class ShoesController < ApplicationController
   end
 
   def show
+    @reviews = @shoe.reviews.order(created_at: :desc)
   end
 
   def new

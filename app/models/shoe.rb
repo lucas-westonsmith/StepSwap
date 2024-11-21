@@ -4,7 +4,7 @@ class Shoe < ApplicationRecord
   has_one_attached :photo
   has_many :wishlist_items
   has_many :wishlists, through: :wishlist_items
-
+  has_many :reviews, through: :bookings
   validates :brand, :size, :title, :condition, :price_per_day, presence: true
   validates :price_per_day, numericality: { greater_than: 0 }
 end

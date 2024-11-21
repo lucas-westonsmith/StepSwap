@@ -15,7 +15,9 @@ Rails.application.routes.draw do
       get 'my_list'
     end
 
-    resources :bookings, only: [:new, :create, :show, :edit, :update]
+    resources :bookings, only: [:new, :create, :show, :edit, :update] do
+      resources :reviews, only: [:new, :create, :edit, :update, :destroy]
+    end
   end
 
   resources :bookings, only: [:index]
@@ -26,4 +28,8 @@ Rails.application.routes.draw do
   end
   # Defines the root path route ("/")
   # root "posts#index"
+  resources :bookings, only: [:index] do
+    resources :reviews, only: [:index]
+  end
+
 end

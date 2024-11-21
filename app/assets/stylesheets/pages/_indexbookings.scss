@@ -1,0 +1,67 @@
+.bookings-background {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Prendre toute la hauteur de la fenêtre */
+  overflow: hidden; /* Pour éviter que les icônes ne sortent de la zone visible */
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.1; // Légère transparence pour que ce soit discret
+    background-image: url('https://cdn-icons-png.flaticon.com/128/1785/1785175.png'); /* Icône de chaussure */
+    background-repeat: repeat; /* Répétition du motif */
+    background-size: 150px 150px; /* Taille de l'icône */
+    background-position: 0 0; /* Commence à partir de l'angle supérieur gauche */
+  }
+
+  /* Utilisation d'icônes supplémentaires avec rotation */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 100px; /* Décalage de la position */
+    left: 50px;
+    width: 150px;
+    height: 150px;
+    background-image: url('https://cdn-icons-png.flaticon.com/128/1785/1785175.png');
+    background-repeat: no-repeat;
+    background-size: contain; /* Redimensionnement de l'icône */
+    transform: rotate(30deg); /* Rotation de l'icône */
+    z-index: -1; /* Garder derrière tout le contenu */
+  }
+
+  /* Autres positions et rotations pour plus de variété */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 250px; /* Nouvelle position */
+    left: 400px; /* Décalage de gauche */
+    width: 150px;
+    height: 150px;
+    background-image: url('https://cdn-icons-png.flaticon.com/128/1785/1785175.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    transform: rotate(120deg); /* Autre rotation */
+    z-index: -2;
+  }
+
+  /* Exemple avec plus de rotations pour varier */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 500px;
+    left: 800px;
+    width: 150px;
+    height: 150px;
+    background-image: url('https://cdn-icons-png.flaticon.com/128/1785/1785175.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    transform: rotate(210deg); /* Autre rotation */
+    z-index: -3;
+  }
+}
+
