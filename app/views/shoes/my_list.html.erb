@@ -1,6 +1,5 @@
 <div class="container my-5">
   <h1 class="mb-4 text-center">My Shop</h1>
-
   <div class="row">
     <% @shoes.each do |shoe| %>
       <div class="col-12 mb-4">
@@ -53,7 +52,7 @@
                         <!-- Accept Icon -->
                         <%= button_to accept_shoe_booking_path(shoe.id, booking.id),
                                       method: :patch,
-                                      class: 'btn btn-success btn-sm me-2',
+                                      class: 'artur green',
                                       title: 'Accept Booking',
                                       data: { toggle: 'tooltip' } do %>
                           <i class="fas fa-check"></i> <!-- Font Awesome check icon -->
@@ -62,14 +61,19 @@
                         <!-- Decline Icon -->
                         <%= button_to decline_shoe_booking_path(shoe.id, booking.id),
                                       method: :patch,
-                                      class: 'btn btn-danger btn-sm',
+                                      class: 'artur red',
                                       title: 'Decline Booking',
                                       data: { toggle: 'tooltip' } do %>
                           <i class="fas fa-times"></i> <!-- Font Awesome times icon -->
                         <% end %>
                       </div>
-                <% end %>
-
+                    <% elsif booking.confirmed? %>
+                      <p class="text-info">You already confirmed this booking.</p>
+                    <% elsif booking.declined? %>
+                      <p class="text-danger">You already declined this booking.</p>
+                    <% else %>
+                      <p>No bookings yet.</p>
+                    <% end %>
                   </div>
                 <% end %>
               </div>
