@@ -29,8 +29,10 @@ class ShoesController < ApplicationController
       render :new
     end
   end
+
   def edit
   end
+
   def update
     if @shoe.update(shoe_params)
       redirect_to @shoe, notice: 'Your shoe details have been successfully updated!'
@@ -38,17 +40,23 @@ class ShoesController < ApplicationController
       render :edit
     end
   end
+
   def destroy
     @shoe.destroy
     redirect_to my_list_shoes_path, notice: 'Your shoe has been successfully removed from the listings.'
   end
+
   def my_list
     @shoes = current_user.shoes
+
   end
+
   private
+
   def set_shoe
     @shoe = Shoe.find(params[:id])
   end
+  
   def shoe_params
     params.require(:shoe).permit(:brand, :size, :condition, :price_per_day, :description, :photo, :title)
   end
