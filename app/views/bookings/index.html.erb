@@ -29,7 +29,6 @@
                 <strong>Status:</strong> <%= booking.status.to_s.capitalize %><br>
                 <strong>Price per day:</strong> <%= booking.shoe.price_per_day %> €<br>
               </p>
-
               <!-- Button to leave a review -->
               <% if booking.reviews.empty? %> <!-- Check if no review exists for this booking -->
                 <%= link_to 'Leave a Review', new_shoe_booking_review_path(booking.shoe, booking), class: 'btn btn-primary' %>
@@ -43,4 +42,3 @@
     </div>
   </div>
 </div>
-

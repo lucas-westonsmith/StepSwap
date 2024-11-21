@@ -32,7 +32,7 @@
 
             <div class="d-flex justify-content-between">
               <%= link_to 'View Details', shoe_path(shoe), class: 'btn btn-success btn-sm' %>
-              <%= button_to 'Remove', remove_item_wishlists_path(shoe_id: shoe.id), method: :delete, class: 'btn btn-danger' %>
+              <%= button_to 'Remove', remove_item_path(shoe_id: shoe.id, from_action: "wishlist"), method: :delete, class: 'delete-button' %>
             </div>
           </div>
 
