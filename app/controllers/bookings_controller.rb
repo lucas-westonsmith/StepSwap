@@ -48,7 +48,6 @@ class BookingsController < ApplicationController
   end
 
   def decline
-    raise
     if @booking.update(status: 'canceled')
       redirect_to bookings_path, notice: 'Booking was successfully declined.'
     else

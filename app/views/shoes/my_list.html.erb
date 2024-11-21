@@ -33,16 +33,18 @@
                 <% end %>
               </div>
 
-              <!-- Détails de la chaussure et réservations -->
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title"><%= shoe.title %></h5>
-                  <p class="card-text">
-                    <strong>Brand:</strong> <%= shoe.brand %><br>
-                    <strong>Size:</strong> <%= shoe.size %><br>
-                    <strong>Condition:</strong> <%= shoe.condition %><br>
-                    <strong>Price per day:</strong> <%= number_to_currency(shoe.price_per_day) %>
-                  </p>
+            <!-- Shoe Details and Bookings -->
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title"><%= shoe.title %></h5>
+                <p class="card-text">
+                  <strong>Brand:</strong> <%= shoe.brand %><br>
+                  <strong>Size:</strong> <%= shoe.size %><br>
+                  <strong>Condition:</strong> <%= shoe.condition %><br>
+                  <strong>Price per day:</strong> <%= number_to_currency(shoe.price_per_day) %>
+                </p>
+
+                <h6 class="mt-4">Bookings for this Shoe:</h6>
 
                   <h6 class="mt-4">Bookings for this Shoe:</h6>
 
@@ -56,31 +58,36 @@
                         </p>
                       </div>
 
-                      <!-- Boutons d'acceptation/refus de réservation -->
-                      <% if booking.pending? %>
-                        <div class="d-flex">
-                          <!-- Icone Accepter -->
-                          <%= button_to accept_shoe_booking_path(shoe.id, booking.id),
-                                        method: :patch,
-                                        class: 'btn btn-success btn-sm me-2',
-                                        title: 'Accept Booking',
-                                        data: { toggle: 'tooltip' } do %>
-                            <i class="fas fa-check"></i> <!-- Icône check -->
-                          <% end %>
+                    <!-- Action Buttons -->
+                    <% if booking.pending? %>
+                      <div class="d-flex">
+                        <!-- Accept Icon -->
+                        <%= button_to accept_shoe_booking_path(shoe.id, booking.id),
+                                      method: :patch,
+                                      class: 'artur green',
+                                      title: 'Accept Booking',
+                                      data: { toggle: 'tooltip' } do %>
+                          <i class="fas fa-check"></i> <!-- Font Awesome check icon -->
+                        <% end %>
 
-                          <!-- Icone Refuser -->
-                          <%= button_to decline_shoe_booking_path(shoe.id, booking.id),
-                                        method: :patch,
-                                        class: 'btn btn-danger btn-sm',
-                                        title: 'Decline Booking',
-                                        data: { toggle: 'tooltip' } do %>
-                            <i class="fas fa-times"></i> <!-- Icône de refus -->
-                          <% end %>
-                        </div>
-                      <% end %>
-                    </div>
-                  <% end %>
-                </div>
+                        <!-- Decline Icon -->
+                        <%= button_to decline_shoe_booking_path(shoe.id, booking.id),
+                                      method: :patch,
+                                      class: 'artur red',
+                                      title: 'Decline Booking',
+                                      data: { toggle: 'tooltip' } do %>
+                          <i class="fas fa-times"></i> <!-- Font Awesome times icon -->
+                        <% end %>
+                      </div>
+                    <% elsif booking.confirmed? %>
+                      <p class="text-info">You already confirmed this booking.</p>
+                    <% elsif booking.declined? %>
+                      <p class="text-danger">You already declined this booking.</p>
+                    <% else %>
+                      <p>No bookings yet.</p>
+                    <% end %>
+                  </div>
+                <% end %>
               </div>
             </div>
           </div>
