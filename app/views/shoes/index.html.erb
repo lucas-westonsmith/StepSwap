@@ -1,7 +1,7 @@
 <div class="container my-5">
   <h1 class="mb-4 text-center">Available Shoes for Rent</h1>
 
-    <%= render 'filter_form' %>
+  <%= render 'filter_form' %>
 
   <div class="shoe-list row">
     <% @shoes.each do |shoe| %>
@@ -30,15 +30,22 @@
               <strong>Size:</strong> <%= shoe.size %><br>
               <strong>Condition:</strong> <%= shoe.condition.capitalize %><br>
               <strong>Price per Day:</strong> $<%= shoe.price_per_day %><br>
-              <strong>Availability:</strong> <%= shoe.availability ? 'Available' : 'Not Available' %>
+              <strong>Average rating:</strong>
+              <% if shoe.reviews.any? %>
+                <% average_rating = shoe.reviews.average(:rating).to_f.round(1) %>
+                <%= average_rating %>/5
+                <span class="star">&#9733;</span>
+              <% else %>
+                No reviews yet
+              <% end %>
             </p>
 
             <div class="d-flex justify-content-between">
               <%= link_to 'View Details', shoe_path(shoe), class: 'btn btn-success btn-sm' %>
               <% if current_user.wishlist.shoes.include?(shoe) %>
-               <%= button_to 'Remove', remove_item_wishlists_path(shoe_id: shoe.id), method: :delete, class: 'btn btn-danger' %>
+                <%= button_to 'Remove', remove_item_wishlists_path(shoe_id: shoe.id), method: :delete, class: 'btn btn-danger' %>
               <% else %>
-              <%= button_to "Add to Wishlist", add_item_wishlists_path(shoe_id: shoe.id) %>
+                <%= button_to "Add to Wishlist", add_item_wishlists_path(shoe_id: shoe.id) %>
               <% end %>
             </div>
           </div>

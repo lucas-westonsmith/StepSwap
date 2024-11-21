@@ -11,6 +11,8 @@
   text-align: center;
   margin-bottom: 30px;
   font-size: 2em;
+  font-weight: bold;
+  font-size: 48px;
 }
 
 /* Main Content Layout */
@@ -42,6 +44,7 @@
 
 /* Details Section */
 .details-section {
+  position: relative; /* Necessary for absolute positioning inside */
   background: #f9f9f9;
   padding: 15px;
   border-radius: 10px;
@@ -52,6 +55,30 @@
   margin: 10px 0;
   font-size: 1em;
 }
+
+/* Average Rating */
+.average-rating {
+  position: absolute; /* Align at the top-right */
+  top: 15px; /* Distance from the top of the box */
+  right: 15px; /* Distance from the right side */
+  font-size: 16px; /* Font size for average rating text */
+  text-align: right;
+  display: flex; /* Use flexbox for aligning items */
+  align-items: center; /* Vertically align the star and text */
+}
+
+.average-rating strong {
+  font-weight: bold; /* Only make the "Average Rating" text bold */
+  margin-right: 8px; /* Adds space after the text "Average Rating:" */
+}
+
+.star {
+  font-size: 24px; /* Larger star size */
+  color: gold; /* Highlight star in gold */
+  margin-left: 5px; /* Space between the number and the star */
+  vertical-align: middle; /* Align star with text */
+}
+
 
 /* Form Section */
 .form-section {
@@ -126,28 +153,68 @@
 }
 
 .reviews-section h2 {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  font-size: 1.8em;
 }
 
-.shoe-brand {
-  font-weight: bold;
-  font-size: 48px;
+/* Review Card */
+.review-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.simple_form.new_shoe{
+/* User photo */
+.review-author-photo .avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Review Details */
+.review-details {
+  flex: 1;
+}
+
+.review-rating {
+  margin-bottom: 5px;
+}
+
+.star {
+  color: #FFD700; /* Gold for filled stars */
+}
+
+.review-content p {
+  margin: 0;
+  font-size: 1em;
+  color: #333;
+}
+
+.review-author small {
+  color: #666;
+  font-size: 0.85em;
+}
+
+/* Wishlist Button */
+.simple_form.new_shoe {
   border-style: solid;
   border-radius: 5px;
   border-color: #ccc;
-  padding-top: 15px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding: 15px;
 }
 
-.btn.btn-success.btn-sm{
+.btn.btn-success.btn-sm {
   border-radius: 5px;
   background-color: #A379F6;
 }
 
-.btn.btn-success.btn-sm:hover{
-  background-color:#6E2DF0 ;
+.btn.btn-success.btn-sm:hover {
+  background-color: #6E2DF0;
 }

@@ -4,22 +4,34 @@
 
   <div class="main-content">
     <!-- Large Image Section -->
-<div class="image-section">
-  <% if @shoe.photo.attached? %>
-    <%= cl_image_tag @shoe.photo.key,
-                     transformation: { width: 300, height: 300, crop: :fill },
-                     title: @shoe.title %>
-  <% else %>
-    <img src="<%= asset_path('default-image.jpg') %>" alt="<%= @shoe.title %>" title="<%= @shoe.title %>">
-  <% end %>
-</div>
-
+    <div class="image-section">
+      <% if @shoe.photo.attached? %>
+        <%= cl_image_tag @shoe.photo.key,
+                         transformation: { width: 300, height: 300, crop: :fill },
+                         title: @shoe.title %>
+      <% else %>
+        <img src="<%= asset_path('default-image.jpg') %>" alt="<%= @shoe.title %>" title="<%= @shoe.title %>">
+      <% end %>
+    </div>
 
     <!-- Right-Side Details and Form Section -->
     <div class="right-section">
       <!-- Details Section -->
       <div class="details-section">
-        <p><strong>Brand:</strong><%= @shoe.brand %></p>
+        <!-- Note moyenne -->
+        <div class="average-rating">
+          <strong>Average Rating: </strong> <!-- Ajout d'un espace après les deux-points -->
+          <% if @average_rating > 0 %>
+            <%= @average_rating %>/5
+            <span class="star" style="font-size: 24px; color: gold;">&#9733;</span> <!-- Grande étoile remplie -->
+          <% else %>
+            <span>No reviews yet</span>
+          <% end %>
+        </div>
+
+
+        <!-- Details -->
+        <p><strong>Brand:</strong> <%= @shoe.brand %></p>
         <p><strong>Size:</strong> <%= @shoe.size %></p>
         <p><strong>Condition:</strong> <%= @shoe.condition.capitalize %></p>
         <p><strong>Price per Day:</strong> $<%= @shoe.price_per_day %></p>
@@ -32,51 +44,48 @@
         <% end %>
       </div>
 
-
       <div class="form-section">
-  <% if @shoe.availability %>
-    <h2 class="form-title">Book It and Rock It!</h2>
-    <%= form_with model: [@shoe, @shoe.bookings.build], url: shoe_bookings_path(@shoe), method: :post, local: true, class: 'booking-form' do |f| %>
-      <!-- Start Date -->
-      <div class="form-group">
-        <%= f.label :start_date, "Start Date" %>
-        <%= f.date_field :start_date, required: true, id: 'start_date', class: 'form-control' %>
+        <% if @shoe.availability %>
+          <h2 class="form-title">Book It and Rock It!</h2>
+          <%= form_with model: [@shoe, @shoe.bookings.build], url: shoe_bookings_path(@shoe), method: :post, local: true, class: 'booking-form' do |f| %>
+            <!-- Start Date -->
+            <div class="form-group">
+              <%= f.label :start_date, "Start Date" %>
+              <%= f.date_field :start_date, required: true, id: 'start_date', class: 'form-control' %>
+            </div>
+
+            <!-- End Date -->
+            <div class="form-group">
+              <%= f.label :end_date, "End Date" %>
+              <%= f.date_field :end_date, required: true, id: 'end_date', class: 'form-control' %>
+            </div>
+
+            <!-- Message (Optional) -->
+            <div class="form-group">
+              <%= f.label :message, "Message (Optional)" %>
+              <%= f.text_area :message, rows: 3, class: 'form-control' %>
+            </div>
+
+            <!-- Payment Method -->
+            <div class="form-group">
+              <%= f.label :payment_method, "Payment Method" %>
+              <%= f.select :payment_method, options_for_select([['Credit Card', 'credit_card'], ['PayPal', 'paypal'], ['Bank Transfer', 'bank_transfer']]), class: 'form-control payment-select' %>
+            </div>
+
+            <!-- Total Price Section -->
+            <div class="form-group">
+              <label>Total: $<span id="total_price">0.00</span></label>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-actions">
+              <%= f.submit 'Book Now', class: 'btn btn-success' %>
+            </div>
+          <% end %>
+        <% else %>
+          <p class="warning">Sorry, this shoe is not available for booking at the moment.</p>
+        <% end %>
       </div>
-
-      <!-- End Date -->
-      <div class="form-group">
-        <%= f.label :end_date, "End Date" %>
-        <%= f.date_field :end_date, required: true, id: 'end_date', class: 'form-control' %>
-      </div>
-
-      <!-- Message (Optional) -->
-      <div class="form-group">
-        <%= f.label :message, "Message (Optional)" %>
-        <%= f.text_area :message, rows: 3, class: 'form-control' %>
-      </div>
-
-      <!-- Payment Method -->
-      <div class="form-group">
-  <%= f.label :payment_method, "Payment Method" %>
-  <%= f.select :payment_method, options_for_select([['Credit Card', 'credit_card'], ['PayPal', 'paypal'], ['Bank Transfer', 'bank_transfer']]), class: 'form-control payment-select' %>
-</div>
-
-
-      <!-- Total Price Section -->
-      <div class="form-group">
-        <label>Total: $<span id="total_price">0.00</span></label>
-      </div>
-
-      <!-- Submit Button -->
-      <div class="form-actions">
-        <%= f.submit 'Book Now', class: 'btn btn-success' %>
-      </div>
-    <% end %>
-  <% else %>
-    <p class="warning">Sorry, this shoe is not available for booking at the moment.</p>
-  <% end %>
-</div>
-
     </div>
   </div>
 
@@ -86,33 +95,50 @@
     <p><%= @shoe.description %></p>
   </div>
 
-<div class="reviews-section">
-  <h2>Customer Reviews</h2>
+  <!-- Reviews Section -->
+  <div class="reviews-section">
+    <h2>Customer Reviews</h2>
 
-  <% if @reviews.any? %>
-    <% @reviews.each do |review| %>
-      <div class="review-card">
-        <div class="review-rating">
-          <strong>Rating:</strong>
-          <% review.rating.times do %>
-            <span class="star">&#9733;</span> <!-- Remplir l'étoile -->
-          <% end %>
-          <% (5 - review.rating).times do %>
-            <span class="star">&#9734;</span> <!-- Étoile vide -->
-          <% end %>
+    <% if @reviews.any? %>
+      <% @reviews.each do |review| %>
+        <div class="review-card">
+          <!-- User photo -->
+          <div class="review-author-photo">
+            <% if review.user.avatar.attached? %>
+              <%= image_tag review.user.avatar, class: "avatar" %>
+            <% else %>
+              <%= image_tag "default-avatar.png", class: "avatar" %>
+            <% end %>
+          </div>
+
+          <!-- Review details -->
+          <div class="review-details">
+            <div class="review-rating">
+              <strong>Rating:</strong>
+              <% review.rating.times do %>
+                <span class="star">&#9733;</span>
+              <% end %>
+              <% (5 - review.rating).times do %>
+                <span class="star">&#9734;</span>
+              <% end %>
+            </div>
+            <div class="review-content">
+              <p><%= review.content %></p>
+            </div>
+            <div class="review-author">
+              <small><%= review.user.email %> - <%= time_ago_in_words(review.created_at) %> ago</small>
+            </div>
+          </div>
         </div>
-        <div class="review-content">
-          <p><%= review.content %></p>
-        </div>
-        <div class="review-author">
-          <small><%= review.user.email %> - <%= time_ago_in_words(review.created_at) %> ago</small>
-        </div>
-      </div>
+      <% end %>
+    <% else %>
+      <p>No reviews yet. Be the first to review this shoe!</p>
     <% end %>
-  <% else %>
-    <p>No reviews yet. Be the first to review this shoe!</p>
-  <% end %>
+  </div>
 </div>
+
+
+
 
 
 <!-- Add JavaScript for Total Price Calculation -->
