@@ -18,7 +18,6 @@ Rails.application.routes.draw do
   end
 
   resources :bookings, only: [:index]
-
   # Defines the root path route ("/")
   # root "posts#index"
 end
