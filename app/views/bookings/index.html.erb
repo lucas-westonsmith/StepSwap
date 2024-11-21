@@ -1,37 +1,39 @@
-<div class="container my-5">
-  <h1 class="mb-4 text-center">My bookings</h1>
+<div class="bookings-background">
+  <div class="container my-5">
+    <h1 class="mb-4 text-center">My bookings</h1>
 
-  <div class="row">
-    <% @bookings.each do |booking| %>
-      <div class="col-md-4 mb-4">
-        <div class="card shadow-sm h-100" style="border-radius: 8px;">
-          <!-- Image of the shoe -->
-          <% if booking.shoe.photo.attached? %>
-            <%= cl_image_tag booking.shoe.photo.key,
-                             transformation: { width: 300, height: 300, crop: :fill },
-                             alt: booking.shoe.title,
-                             title: booking.shoe.title,
-                             class: 'card-img-top',
-                             style: 'object-fit: cover; height: 200px; border-top-left-radius: 8px; border-top-right-radius: 8px;' %>
-          <% else %>
-            <img src="<%= asset_path('default-image.jpg') %>"
-                 alt="<%= booking.shoe.title %>"
-                 title="<%= booking.shoe.title %>"
-                 class="card-img-top"
-                 style="object-fit: cover; height: 200px; border-top-left-radius: 8px; border-top-right-radius: 8px;">
-          <% end %>
+    <div class="row">
+      <% @bookings.each do |booking| %>
+        <div class="col-md-4 mb-4">
+          <div class="card shadow-sm h-100" style="border-radius: 8px;">
+            <% if booking.shoe.photo.attached? %>
+              <%= cl_image_tag booking.shoe.photo.key,
+                               transformation: { width: 300, height: 300, crop: :fill },
+                               alt: booking.shoe.title,
+                               title: booking.shoe.title,
+                               class: 'card-img-top',
+                               style: 'object-fit: cover; height: 200px; border-top-left-radius: 8px; border-top-right-radius: 8px;' %>
+            <% else %>
+              <img src="<%= asset_path('default-image.jpg') %>"
+                   alt="<%= booking.shoe.title %>"
+                   title="<%= booking.shoe.title %>"
+                   class="card-img-top"
+                   style="object-fit: cover; height: 200px; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+            <% end %>
 
-          <div class="card-body">
-            <h5 class="card-title"><%= booking.shoe.title %></h5>
-            <p class="card-text mb-3">
-              <strong>Start Date:</strong> <%= booking.start_date %><br>
-              <strong>End Date:</strong> <%= booking.end_date %><br>
-             <strong>Status:</strong> <%= booking.status.to_s.capitalize %><br>
-             <strong>Price per day</strong> <%= booking.shoe.price_per_day %> €<br>
-            </p>
+            <div class="card-body">
+              <h5 class="card-title"><%= booking.shoe.title %></h5>
+              <p class="card-text mb-3">
+                <strong>Start Date:</strong> <%= booking.start_date %><br>
+                <strong>End Date:</strong> <%= booking.end_date %><br>
+                <strong>Status:</strong> <%= booking.status.to_s.capitalize %><br>
+                <strong>Price per day:</strong> <%= booking.shoe.price_per_day %> €<br>
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>
+
