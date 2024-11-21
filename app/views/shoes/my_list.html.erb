@@ -3,42 +3,76 @@
 
   <div class="row">
     <% @shoes.each do |shoe| %>
-      <div class="col-md-4 mb-4">
-        <div class="card shadow-sm h-100" style="border-radius: 8px;">
-          <!-- Image of the shoe -->
-    <% if shoe.photo.attached? %>
-          <%= cl_image_tag shoe.photo.key,
-                           transformation: { width: 300, height: 200, crop: :fill },
-                           class: "card-img-top",
-                           style: "object-fit: cover; height: 200px; border-top-left-radius: 8px; border-top-right-radius: 8px;",
-                           alt: shoe.title,
-                           title: shoe.title %>
-        <% else %>
-          <!-- Display default image when no photo is attached -->
-          <%= image_tag(asset_path('default-image.jpg'), alt: shoe.title, title: shoe.title,
-                  class: "card-img-top",
-                  style: "object-fit: cover; height: 200px; border-top-left-radius: 8px; border-top-right-radius: 8px;") %>
-        <% end %>
-
-          <div class="card-body">
-            <h5 class="card-title"><%= shoe.title %></h5>
-            <p class="card-text mb-3">
-              <strong>Brand:</strong> <%= shoe.brand %><br>
-              <strong>Size:</strong> <%= shoe.size %><br>
-              <strong>Condition:</strong> <%= shoe.condition %><br>
-              <strong>Price per day:</strong> <%= shoe.price_per_day %>
-            </p>
-            <div class="d-flex justify-content-between">
-              <!-- Edit Button -->
-              <%= link_to edit_shoe_path(shoe) do %>
-                <i class="fas fa-pencil-alt icon"></i>
+      <div class="col-12 mb-4">
+        <div class="card shadow-sm" style="border-radius: 8px; overflow: hidden;">
+          <div class="row g-0">
+            <!-- Shoe Image -->
+            <div class="col-md-4">
+              <% if shoe.photo.attached? %>
+                <%= cl_image_tag shoe.photo.key,
+                                 transformation: { width: 400, height: 300, crop: :fill },
+                                 class: "img-fluid h-100 w-100",
+                                 style: "object-fit: cover;",
+                                 alt: shoe.title,
+                                 title: shoe.title %>
+              <% else %>
+                <%= image_tag(asset_path('default-image.jpg'),
+                              alt: shoe.title,
+                              title: shoe.title,
+                              class: "img-fluid h-100 w-100",
+                              style: "object-fit: cover;") %>
               <% end %>
+            </div>
 
-              <!-- Delete Button -->
-             <%= link_to shoe_path(shoe), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this shoe from your list?" } do %>
-                <i class="fas fa-trash trash-button icon"></i>  <!-- Font Awesome Trash Icon -->
-            <% end %>
+            <!-- Shoe Details and Bookings -->
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title"><%= shoe.title %></h5>
+                <p class="card-text">
+                  <strong>Brand:</strong> <%= shoe.brand %><br>
+                  <strong>Size:</strong> <%= shoe.size %><br>
+                  <strong>Condition:</strong> <%= shoe.condition %><br>
+                  <strong>Price per day:</strong> <%= number_to_currency(shoe.price_per_day) %>
+                </p>
 
+                <h6 class="mt-4">Bookings for this Shoe:</h6>
+
+                <% shoe.bookings.each do |booking| %>
+                  <div class="d-flex align-items-center justify-content-between border-top pt-2 mt-2">
+                    <div>
+                      <p class="mb-1">
+                        <strong>Booking ID:</strong> <%= booking.id %><br>
+                        <strong>Status:</strong> <%= booking.status.capitalize %><br>
+                        <strong>Requested by:</strong> <%= booking.user.email %>
+                      </p>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <% if booking.pending? %>
+                      <div class="d-flex">
+                        <!-- Accept Icon -->
+                        <%= button_to accept_shoe_booking_path(shoe.id, booking.id),
+                                      method: :patch,
+                                      class: 'btn btn-success btn-sm me-2',
+                                      title: 'Accept Booking',
+                                      data: { toggle: 'tooltip' } do %>
+                          <i class="fas fa-check"></i> <!-- Font Awesome check icon -->
+                        <% end %>
+
+                        <!-- Decline Icon -->
+                        <%= button_to decline_shoe_booking_path(shoe.id, booking.id),
+                                      method: :patch,
+                                      class: 'btn btn-danger btn-sm',
+                                      title: 'Decline Booking',
+                                      data: { toggle: 'tooltip' } do %>
+                          <i class="fas fa-times"></i> <!-- Font Awesome times icon -->
+                        <% end %>
+                      </div>
+                <% end %>
+
+                  </div>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
