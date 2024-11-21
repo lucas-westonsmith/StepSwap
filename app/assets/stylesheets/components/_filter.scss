@@ -7,12 +7,13 @@
   background: #f8f9fa;
   padding: 20px;
   border: 1px solid #ddd;
-  border-radius: 8px;
+  border-radius: 20px;  /* Make the form container have rounded corners */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  max-width: 1000px;
-  margin: 20px auto;
+  width: 100%;
+  margin: 20px 0;
   gap: 15px;
 }
+
 
 /* Individual filter group */
 .filter-group {
@@ -32,20 +33,39 @@
 }
 
 /* Select and input fields */
-.filter-group select,
-.filter-group input {
+.filter-group select {
+  cursor: pointer;
   width: 100%;
-  padding: 8px;
+  padding: 10px 12px;  /* Increased padding for a more comfortable feel */
   font-size: 0.9rem;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 8px;  /* Make the select field rounded */
   transition: border-color 0.3s ease-in-out;
+  background-color: #fff; /* White background */
+  appearance: none; /* Remove the default arrow for a cleaner look (optional) */
+  -webkit-appearance: none; /* For Safari */
+  -moz-appearance: none; /* For Firefox */
 }
 
-.filter-group select:focus,
-.filter-group input:focus {
-  border-color: #007bff;
+/* Add a custom arrow */
+.filter-group select::after {
+  content: '▼'; /* Adds a custom down arrow */
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #333; /* Arrow color */
+}
+
+/* Focused select field */
+.filter-group select:focus {
+  border-color: #007bff; /* Highlight the select field when focused */
   outline: none;
+}
+
+/* Style for the select dropdown background */
+.filter-group select {
+  background-color: #f0f0f0;  /* Light background for select */
 }
 
 /* Submit button */
@@ -63,9 +83,53 @@
   background-color: #A379F6;
 }
 
+.filter-submit i {
+  font-size: 50px;
+}
+
 .filter-submit:hover {
   background-color: #6E2DF0;
 }
+
+/* Style for number input fields */
+.filter-group input[type="number"] {
+  width: 100%;
+  padding: 10px 12px;  /* Increased padding for comfort */
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;  /* Rounded corners for consistency */
+  transition: border-color 0.3s ease-in-out;
+  background-color: #F0F0F0;  /* White background */
+}
+
+/* Focused state for number input */
+.filter-group input[type="number"]:focus {
+  border-color: #007bff; /* Highlight border on focus */
+  outline: none;
+}
+
+/* Optional: Remove spinner (up/down arrows) in number input */
+.filter-group input[type="number"]::-webkit-outer-spin-button,
+.filter-group input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;  /* Removes spinner in webkit browsers (Chrome, Safari) */
+  margin: 0;
+}
+
+/* Optional: Firefox spinner removal */
+.filter-group input[type="number"] {
+  -moz-appearance: textfield; /* Removes spinner in Firefox */
+}
+
+.redondo {
+  border-radius: 50%;
+  font-size: 20px;
+  margin-top: 17px;
+}
+
+
+
+
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
