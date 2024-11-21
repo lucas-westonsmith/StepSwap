@@ -46,8 +46,9 @@
 
                 <h6 class="mt-4">Bookings for this Shoe:</h6>
 
-                  <h6 class="mt-4">Bookings for this Shoe:</h6>
-
+                <% if shoe.bookings.empty? %>
+                  <p>No bookings yet for this shoe. 😞</p>
+                <% else %>
                   <% shoe.bookings.each do |booking| %>
                     <div class="d-flex align-items-center justify-content-between border-top pt-2 mt-2">
                       <div>
@@ -83,12 +84,10 @@
                       <p class="text-info">You already confirmed this booking.</p>
                     <% elsif booking.declined? %>
                       <p class="text-danger">You already declined this booking.</p>
-                    <% else %>
-                      <p>No bookings yet.</p>
                     <% end %>
                   </div>
                 <% end %>
-              </div>
+              <% end %>
             </div>
           </div>
         </div>
