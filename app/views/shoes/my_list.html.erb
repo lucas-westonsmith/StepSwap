@@ -1,4 +1,3 @@
-
 <div class="container my-5">
 <div class="my-4">
   <h1 class="mb-4 text-center">My shop</h1>
@@ -39,12 +38,24 @@
               <div class="col-md-8">
                 <div class="card-body">
                   <h5 class="card-title"><%= shoe.title %></h5>
+
+                  <!-- Shoe Details -->
                   <p class="card-text">
                     <strong>Brand:</strong> <%= shoe.brand %><br>
                     <strong>Size:</strong> <%= shoe.size %><br>
                     <strong>Condition:</strong> <%= shoe.condition %><br>
                     <strong>Price per day:</strong> <%= number_to_currency(shoe.price_per_day) %>
                   </p>
+
+                  <!-- Action Buttons (Edit and Delete) - placed under Price per day -->
+                  <div class="mb-3">
+                    <%= link_to edit_shoe_path(shoe), class: "btn btn-primary btn-sm" do %>
+                      Edit
+                    <% end %>
+                    <%= link_to shoe_path(shoe), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this shoe from your list?" }, class: "btn btn-danger btn-sm" do %>
+                      <i class="fa-solid fa-trash fa-flip-horizontal fa-xl trash" style="color: #F58e8e;"></i> <!-- Font Awesome Trash Icon -->
+                    <% end %>
+                  </div>
 
                   <h6 class="mt-4">Bookings for this Shoe:</h6>
 
@@ -61,27 +72,22 @@
                           </p>
                         </div>
 
-              <!-- Delete Button -->
-
-                        <!-- Action Buttons -->
+                        <!-- Action Buttons for bookings -->
                         <% if booking.pending? %>
                           <div class="d-flex">
-                            <!-- Accept Icon -->
                             <%= button_to accept_shoe_booking_path(shoe.id, booking.id),
                                           method: :patch,
                                           class: 'artur green',
                                           title: 'Accept Booking',
                                           data: { toggle: 'tooltip' } do %>
-                              <i class="fas fa-check"></i> <!-- Font Awesome check icon -->
+                              <i class="fas fa-check"></i>
                             <% end %>
-
-                            <!-- Decline Icon -->
                             <%= button_to decline_shoe_booking_path(shoe.id, booking.id),
                                           method: :patch,
                                           class: 'artur red',
                                           title: 'Decline Booking',
                                           data: { toggle: 'tooltip' } do %>
-                              <i class="fas fa-times"></i> <!-- Font Awesome times icon -->
+                              <i class="fas fa-times"></i>
                             <% end %>
                           </div>
                         <% elsif booking.confirmed? %>
@@ -93,20 +99,6 @@
                     <% end %>
                   <% end %>
 
-                  <%= link_to edit_shoe_path(shoe), class: "btn btn-success m-3" do %>
-                      Edit
-                    <% end %>
-
-
-                  <!-- Delete Button -->
-                    <%= link_to shoe_path(shoe), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this shoe from your list?" } do %>
-                         <i class="fa-solid fa-trash fa-flip-horizontal fa-xl trash" style="color: #F58e8e;"></i>  <!-- Font Awesome Trash Icon -->
-                    <% end %>
-
-
-
-
-                  <!-- Edit Button -->
                 </div>
               </div>
             </div>
