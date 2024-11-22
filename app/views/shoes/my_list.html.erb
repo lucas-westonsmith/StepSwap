@@ -44,7 +44,15 @@
                     <strong>Brand:</strong> <%= shoe.brand %><br>
                     <strong>Size:</strong> <%= shoe.size %><br>
                     <strong>Condition:</strong> <%= shoe.condition %><br>
-                    <strong>Price per day:</strong> <%= number_to_currency(shoe.price_per_day) %>
+                    <strong>Price per day:</strong> <%= number_to_currency(shoe.price_per_day) %><br>
+                    <!-- Edit Button -->
+                    <%= link_to edit_shoe_path(shoe), class: "btn btn-primary" do %>
+                      Edit
+                    <% end %>
+                   <!-- Delete Button -->
+                    <%= link_to shoe_path(shoe), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this shoe from your list?" } do %>
+                      <i class="fa-solid fa-trash fa-flip-horizontal fa-xl trash" style="color: #F58e8e;"></i>  <!-- Font Awesome Trash Icon -->
+                    <% end %>
                   </p>
 
                   <!-- Action Buttons (Edit and Delete) - placed under Price per day -->
@@ -98,7 +106,6 @@
                       </div>
                     <% end %>
                   <% end %>
-
                 </div>
               </div>
             </div>
