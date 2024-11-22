@@ -44,48 +44,45 @@
         <% end %>
       </div>
 
-      <div class="form-section">
-        <% if @shoe.availability %>
-          <h2 class="form-title">Book It and Rock It!</h2>
-          <%= form_with model: [@shoe, @shoe.bookings.build], url: shoe_bookings_path(@shoe), method: :post, local: true, class: 'booking-form' do |f| %>
-            <!-- Start Date -->
-            <div class="form-group">
-              <%= f.label :start_date, "Start Date" %>
-              <%= f.date_field :start_date, required: true, id: 'start_date', class: 'form-control' %>
-            </div>
+      <div class="form-section" data-controller="booking" data-booking-price-per-day-value="<%= @shoe.price_per_day %>">
+  <h2 class="form-title">Book It and Rock It!</h2>
+  <%= form_with model: [@shoe, @shoe.bookings.build], url: shoe_bookings_path(@shoe), method: :post, local: true, class: 'booking-form' do |f| %>
+    <!-- Start Date -->
+    <div class="form-group">
+      <%= f.label :start_date, "Start Date" %>
+      <%= f.date_field :start_date, required: true, id: 'start_date', class: 'form-control', data: { booking_target: "startDate", action: "change->booking#calculateTotal" } %>
+    </div>
 
-            <!-- End Date -->
-            <div class="form-group">
-              <%= f.label :end_date, "End Date" %>
-              <%= f.date_field :end_date, required: true, id: 'end_date', class: 'form-control' %>
-            </div>
+    <!-- End Date -->
+    <div class="form-group">
+      <%= f.label :end_date, "End Date" %>
+      <%= f.date_field :end_date, required: true, id: 'end_date', class: 'form-control', data: { booking_target: "endDate", action: "change->booking#calculateTotal" } %>
+    </div>
 
-            <!-- Message (Optional) -->
-            <div class="form-group">
-              <%= f.label :message, "Message (Optional)" %>
-              <%= f.text_area :message, rows: 3, class: 'form-control' %>
-            </div>
+    <!-- Message (Optional) -->
+    <div class="form-group">
+      <%= f.label :message, "Message (Optional)" %>
+      <%= f.text_area :message, rows: 3, class: 'form-control' %>
+    </div>
 
-            <!-- Payment Method -->
-            <div class="form-group">
-              <%= f.label :payment_method, "Payment Method" %>
-              <%= f.select :payment_method, options_for_select([['Credit Card', 'credit_card'], ['PayPal', 'paypal'], ['Bank Transfer', 'bank_transfer']]), class: 'form-control payment-select' %>
-            </div>
+    <!-- Payment Method -->
+    <div class="form-group">
+      <%= f.label :payment_method, "Payment Method" %>
+      <%= f.select :payment_method, options_for_select([['Credit Card', 'credit_card'], ['PayPal', 'paypal'], ['Bank Transfer', 'bank_transfer']]), class: 'form-control payment-select' %>
+    </div>
 
-            <!-- Total Price Section -->
-            <div class="form-group">
-              <label>Total: $<span id="total_price">0.00</span></label>
-            </div>
+    <!-- Total Price Section -->
+    <div class="form-group">
+      <label>Total: $<span id="total_price" data-booking-target="totalPrice">0.00</span></label>
+    </div>
 
-            <!-- Submit Button -->
-            <div class="form-actions">
-              <%= f.submit 'Book Now', class: 'btn btn-success' %>
-            </div>
-          <% end %>
-        <% else %>
-          <p class="warning">Sorry, this shoe is not available for booking at the moment.</p>
-        <% end %>
-      </div>
+    <!-- Submit Button -->
+    <div class="form-actions">
+      <%= f.submit 'Book Now', class: 'btn btn-success' %>
+    </div>
+  <% end %>
+</div>
+
     </div>
   </div>
 
@@ -136,36 +133,3 @@
     <% end %>
   </div>
 </div>
-
-
-
-
-
-<!-- Add JavaScript for Total Price Calculation -->
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Get elements
-    const startDateField = document.getElementById('start_date');
-    const endDateField = document.getElementById('end_date');
-    const totalPriceLabel = document.getElementById('total_price');
-    const pricePerDay = <%= @shoe.price_per_day %>; // Pass price per day from Rails
-
-    // Function to update the total price
-    function updateTotalPrice() {
-      const startDate = new Date(startDateField.value);
-      const endDate = new Date(endDateField.value);
-
-      // Ensure both dates are selected
-      if (startDate && endDate && endDate >= startDate) {
-        const timeDifference = endDate - startDate;
-        const days = timeDifference / (1000 * 3600 * 24); // Convert milliseconds to days
-        const totalPrice = days * pricePerDay;
-        totalPriceLabel.textContent = totalPrice.toFixed(2);
-      }
-    }
-
-    // Add event listeners to date fields
-    startDateField.addEventListener('change', updateTotalPrice);
-    endDateField.addEventListener('change', updateTotalPrice);
-  });
-</script>

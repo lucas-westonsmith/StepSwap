@@ -5,6 +5,7 @@ class ShoesController < ApplicationController
   def index
     @shoes = Shoe.all
   end
+
   def filter
     @shoes = Shoe.all
     @shoes = @shoes.where(brand: params[:brand]) if params[:brand].present?
@@ -13,17 +14,22 @@ class ShoesController < ApplicationController
     @shoes = @shoes.order(price_per_day: params[:sort_price]) if params[:sort_price].present?
     render :index
   end
+
   def show
     @reviews = @shoe.reviews.order(created_at: :desc)
     @average_rating = if @reviews.any?
       @reviews.average(:rating).round(1) # Moyenne arrondie à 1 décimal
+
     else
+
       0
     end
   end
+
   def new
     @shoe = Shoe.new
   end
+
   def create
     @shoe = current_user.shoes.build(shoe_params)
     if @shoe.save
@@ -61,7 +67,7 @@ class ShoesController < ApplicationController
   def set_shoe
     @shoe = Shoe.find(params[:id])
   end
-  
+
   def shoe_params
     params.require(:shoe).permit(:brand, :size, :condition, :price_per_day, :description, :photo, :title)
   end
