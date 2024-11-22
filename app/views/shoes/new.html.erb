@@ -1,33 +1,36 @@
+
+
 <div class="new-shoe-title">
   <h1>New Shoe</h1>
 </div>
-  <div style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
-    <%= simple_form_for @shoe, url: shoes_path, local: true, data: { turbo: false } do |f| %>
-      <!-- Title -->
-      <strong><%= f.input :title, as: :string, label: "Title", required: true, input_html: { class: "form-control" } %></strong>
 
-      <!-- Brand -->
-      <%= f.input :brand, as: :select, label: "Brand", collection: ['', 'Adidas', 'Asics', 'Balenciaga', 'Birkenstock', 'Brooks', 'Clarks', 'Columbia', 'Converse', 'Dr. Martens', 'Fila', 'Gucci', 'Hoka One One', 'Jordan', 'Keen', 'Lacoste', 'Merrell', 'Mizuno', 'New Balance', 'Nike', 'Puma', 'Reebok', 'Salomon', 'Saucony', 'Skechers', 'The North Face', 'Timberland', 'Under Armour', 'Vans', 'Prada'], input_html: { class: "form-control" }, include_blank: 'Select Brand' %>
+<div style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
+  <%= simple_form_for @shoe, url: shoes_path, local: true, data: { turbo: false } do |f| %>
+    <!-- Title -->
+    <strong><%= f.input :title, as: :string, label: "Title", required: true, input_html: { class: "form-control" } %></strong>
 
+    <!-- Brand -->
+    <%= f.input :brand, as: :select, label: "Brand", collection: ['', 'Adidas', 'Asics', 'Balenciaga', 'Birkenstock', 'Brooks', 'Clarks', 'Columbia', 'Converse', 'Dr. Martens', 'Fila', 'Gucci', 'Hoka One One', 'Jordan', 'Keen', 'Lacoste', 'Merrell', 'Mizuno', 'New Balance', 'Nike', 'Puma', 'Reebok', 'Salomon', 'Saucony', 'Skechers', 'The North Face', 'Timberland', 'Under Armour', 'Vans', 'Prada'], input_html: { class: "form-control" }, include_blank: 'Select Brand' %>
 
-      <!-- Size -->
-      <%= f.input :size, as: :integer, label: "Size", required: true, input_html: { class: "form-control" } %>
+    <!-- Size -->
+    <%= f.input :size, as: :integer, label: "Size", required: true, input_html: { class: "form-control" } %>
 
-      <!-- Condition (Dropdown) -->
-      <%= f.input :condition, as: :select, label: "Condition", collection: ['New', 'Like New', 'Used', 'Worn'], input_html: { class: "form-control" }, include_blank: 'Select Condition' %>
+    <!-- Condition (Dropdown) -->
+    <%= f.input :condition, as: :select, label: "Condition", collection: ['New', 'Like New', 'Used', 'Worn'], input_html: { class: "form-control" }, include_blank: 'Select Condition' %>
 
-      <!-- Price per day -->
-      <%= f.input :price_per_day, as: :decimal, label: "Price per day", input_html: { class: "form-control" } %>
+    <!-- Price per day -->
+    <%= f.input :price_per_day, as: :decimal, label: "Price per day", input_html: { class: "form-control" } %>
 
-      <!-- Description -->
-      <%= f.input :description, as: :text, label: "Description (optional)", input_html: { class: "form-control" } %>
-      <!-- Shoe Image -->
-      <%= f.input :photo, as: :file %>
+    <!-- Description -->
+    <%= f.input :description, as: :text, label: "Description (optional)", input_html: { class: "form-control" } %>
 
-      <!-- Submit Button -->
-      <div class="signup-form" style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
-        <%= f.submit 'Confirm creation', class:"confirm-creation-button" %>
-      </div>
-    <% end %>
-  </div>
-</div><br>
+    <!-- Shoe Image -->
+    <%= f.input :photo, as: :file %>
+
+    <!-- Submit Button -->
+    <div class="signup-form" style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
+      <%= f.submit 'Confirm creation', class: "confirm-creation-button" %>
+    </div>
+  <% end %>
+</div>
+<br>
