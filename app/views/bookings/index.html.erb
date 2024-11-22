@@ -1,7 +1,8 @@
 <div class="container my-5">
-<div class="border-bottom mb-4">
-  <h1 class="mb-4 text-center">My bookings</h1>
-</div>
+  <div class="border-bottom mb-4">
+    <h1 class="mb-4 text-center">My bookings</h1>
+  </div>
+
   <% if @bookings.empty? %>
     <div class="empty-message">
       <h2>Nothing booked yet? 😱 Let’s change that! 🏃‍♀️</h2>
@@ -35,21 +36,23 @@
                 <strong>Start Date:</strong> <%= booking.start_date %><br>
                 <strong>End Date:</strong> <%= booking.end_date %><br>
                 <strong>Status:</strong>
-                <% case booking.status %>
-                  <% when "pending" %>
-                    <span class="text-warning">Pending</span>
-                  <% when "confirmed" %>
-                    <span class="text-info">Confirmed</span>
-                  <% when "canceled" %>
-                    <span class="text-danger">Declined</span>
-                  <% else %>
-                    <span class="text-muted">Unknown</span>
+                <% if booking.pending? %>
+                  <span class="text-warning">Pending</span>
+                <% elsif booking.confirmed? %>
+                  <span class="text-info">Confirmed</span>
+                <% elsif booking.declined? %>
+                  <span class="text-danger">Declined</span>
+                <% else %>
+                  <span class="text-muted">Unknown</span>
                 <% end %><br>
                 <strong>Price per day:</strong> <%= booking.shoe.price_per_day %> €<br>
               </p>
-              <!-- Button to leave a review -->
-              <% if booking.reviews.empty? %> <!-- Check if no review exists for this booking -->
+
+              <!-- Vérifier si la réservation est confirmée avant d'afficher le bouton -->
+              <% if booking.confirmed? && booking.reviews.empty? %>
                 <%= link_to 'Leave a Review', new_shoe_booking_review_path(booking.shoe, booking), class: 'btn btn-success', style: "border-radius: 14px" %>
+              <% elsif booking.pending? || booking.declined? %>
+                <p class="text-muted">You can leave a review once the booking is confirmed.</p>
               <% else %>
                 <p class="text-success">You already left a review!</p>
               <% end %>
