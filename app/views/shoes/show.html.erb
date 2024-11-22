@@ -24,6 +24,27 @@
     <div class="right-section">
       <!-- Details Section -->
 
+        <!-- Details -->
+        <p><strong>Brand:</strong> <%= @shoe.brand %></p>
+        <p><strong>Size:</strong> <%= @shoe.size %></p>
+        <p><strong>Condition:</strong> <%= @shoe.condition.capitalize %></p>
+        <p><strong>Price per Day:</strong> $<%= @shoe.price_per_day %></p>
+        <p><strong>Availability:</strong> <%= @shoe.availability ? 'Available' : 'Not Available' %></p>
+
+        <% if user_signed_in? %>
+          <% if current_user.wishlist.shoes.include?(@shoe) %>
+            <%= link_to remove_item_path(shoe_id: @shoe.id), data: {turbo_method: :delete} do %>
+              <i class="fa-solid fa-heart fa-2xl" style="color: #B197FC;"></i></i>
+            <% end %>
+          <% else %>
+            <%= link_to add_item_path(shoe_id: @shoe.id), data: {turbo_method: :post} do %>
+              <i class="fa-regular fa-heart fa-2xl wishlist" style="color: #B197FC;"></i>
+            <% end %>
+          <% end %>
+        <% else %>
+          <p><%= link_to 'Sign in to add to wishlist', new_user_session_path %></p>
+        <% end %>
+      </div>
 
       <div class="form-section" data-controller="booking" data-booking-price-per-day-value="<%= @shoe.price_per_day %>">
   <h2 class="form-title">Book It and Rock It!</h2>

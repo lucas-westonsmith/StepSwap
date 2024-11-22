@@ -46,6 +46,12 @@
 
                 <h6 class="mt-4">Bookings for this Shoe:</h6>
 
+
+              <!-- Delete Button -->
+             <%= link_to shoe_path(shoe), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this shoe from your list?" } do %>
+                <i class="fa-solid fa-trash fa-flip-horizontal fa-xl trash" style="color: #ec7979;"></i>  <!-- Font Awesome Trash Icon -->
+            <% end %>
+
                 <% if shoe.bookings.empty? %>
                   <p>No bookings yet for this shoe. 😞</p>
                 <% else %>

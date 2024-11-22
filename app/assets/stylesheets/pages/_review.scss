@@ -1,0 +1,36 @@
+.submit-review-button{
+  text-align: center;
+  width:125px;
+  height: 45px;
+  border-radius: 5px;
+  border-width: 1px;
+  border: solid;
+  transition: 0s color;
+  background-color: #A379F6;
+  color: white;
+  border-color: #6925f1;
+}
+
+.submit-review-button:hover{
+  background-color: #6E2DF0;
+  color: white;
+}
+
+#new_review{
+  border-style: solid;
+  border-radius: 5px;
+  border-color: #ccc;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.review-title{
+  text-align: center;
+  padding-top: 30px;
+}
+
+.review-form{
+  padding-bottom: 25px;
+  padding-top: 25px;
+}
