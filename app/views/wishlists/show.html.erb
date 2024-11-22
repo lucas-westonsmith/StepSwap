@@ -1,56 +1,54 @@
-  <div class="container my-5">
-    <h1 class="mb-4 text-center">My wishlist</h1>
+<div class="container my-5">
+  <h1 class="mb-4 text-center">Your Wishlist</h1>
 
-    <!-- Si la wishlist est vide -->
-    <% if @wishlist.shoes.empty? %>
-      <div class="empty-message">
-        <h2>Uh-oh, your wishlist is feeling lonely! 😔</h2>
-        <p>Time to fill it with some epic shoes! 👟✨ Start exploring and make your feet happy! 🎉</p>
-        <%= link_to 'Browse Shoes', shoes_path, class: 'empty-button' %>
-      </div>
-    <% else %>
-      <!-- Si la wishlist contient des chaussures -->
-      <div class="shoe-list row">
-        <% @wishlist.shoes.each do |shoe| %>
-          <div class="col-md-4 mb-4">
-            <div class="card shadow-sm" style="height: 100%; border-radius: 8px;">
-              <!-- Image de la chaussure -->
-              <% if shoe.photo.attached? %>
-                <%= cl_image_tag shoe.photo.key,
-                                transformation: { width: 300, height: 200, crop: :fill },
-                                class: "card-img-top",
-                                style: "object-fit: cover; height: 200px; border-top-left-radius: 8px; border-top-right-radius: 8px;",
-                                alt: shoe.title,
-                                title: shoe.title %>
-              <% else %>
-                <img class="card-img-top"
-                    src="<%= asset_path('default-image.jpg') %>"
-                    alt="<%= shoe.title %>"
-                    title="<%= shoe.title %>"
-                    style="object-fit: cover; height: 200px; border-top-left-radius: 8px; border-top-right-radius: 8px;">
-              <% end %>
+  <!-- Si la wishlist est vide  -->
+  <% if @wishlist.shoes.empty? %>
+    <div class="empty-message">
+      <h2>Uh-oh, your wishlist is feeling lonely! 😔</h2>
+      <p>Time to fill it with some epic shoes! 👟✨ Start exploring and make your feet happy! 🎉</p>
+      <%= link_to 'Browse Shoes', shoes_path, class: 'empty-button' %>
+    </div>
+  <% else %>
+    <!-- Si la wishlist contient des chaussures -->
+    <div class="shoe-list row">
+      <% @wishlist.shoes.each do |shoe| %>
+        <div class="col-md-4 mb-4">
+          <div class="card shadow-sm" style="height: 100%; border-radius: 8px;">
+            <!-- Image de la chaussure -->
+            <% if shoe.photo.attached? %>
+              <%= cl_image_tag shoe.photo.key,
+                              transformation: { width: 300, height: 200, crop: :fill },
+                              class: "card-img-top",
+                              style: "object-fit: cover; height: 200px; border-top-left-radius: 8px; border-top-right-radius: 8px;",
+                              alt: shoe.title,
+                              title: shoe.title %>
+            <% else %>
+              <img class="card-img-top"
+                  src="<%= asset_path('default-image.jpg') %>"
+                  alt="<%= shoe.title %>"
+                  title="<%= shoe.title %>"
+                  style="object-fit: cover; height: 200px; border-top-left-radius: 8px; border-top-right-radius: 8px;">
+            <% end %>
 
-              <div class="card-body">
-                <h5 class="card-title"><%= shoe.title %></h5>
-                <p class="card-text mb-3">
-                  <strong>Size:</strong> <%= shoe.size %><br>
-                  <strong>Condition:</strong> <%= shoe.condition.capitalize %><br>
-                  <strong>Price per Day:</strong> $<%= shoe.price_per_day %><br>
-                  <strong>Availability:</strong> <%= shoe.availability ? 'Available' : 'Not Available' %>
-                </p>
+            <div class="card-body">
+              <h5 class="card-title"><%= shoe.title %></h5>
+              <p class="card-text mb-3">
+                <strong>Size:</strong> <%= shoe.size %><br>
+                <strong>Condition:</strong> <%= shoe.condition.capitalize %><br>
+                <strong>Price per Day:</strong> $<%= shoe.price_per_day %><br>
+                <strong>Availability:</strong> <%= shoe.availability ? 'Available' : 'Not Available' %>
+              </p>
 
-                <div class="d-flex justify-content-between">
-                  <%= link_to 'View Details', shoe_path(shoe), class: 'btn btn-success btn-sm' %>
-                  <%= link_to remove_item_path(shoe, from_action: "wishlist"), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this shoe from your list?" } do %>
-                    <i class="fa-solid fa-trash fa-xl trash" style="color: #F58e8e;"></i></i>
-                  <% end %>
-                </div>
+              <div class="d-flex justify-content-between">
+                <%= link_to 'View Details', shoe_path(shoe), class: 'btn btn-success btn-sm' %>
+                <%= link_to remove_item_path(shoe, from_action: "wishlist"), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this shoe from your list?" } do %>
+                  <i class="fa-solid fa-trash fa-xl trash" style="color: #F58e8e;"></i></i>
+                <% end %>
               </div>
-
-
+            </div>
           </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
