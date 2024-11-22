@@ -7,13 +7,19 @@ class ShoesController < ApplicationController
   end
 
   def filter
-    @shoes = Shoe.all
+    @shoes = Shoe.left_joins(bookings: :reviews)
+                 .select('shoes.*, COALESCE(AVG(reviews.rating), 0) as average_rating')
+                 .group('shoes.id')
+
     @shoes = @shoes.where(brand: params[:brand]) if params[:brand].present?
     @shoes = @shoes.where(size: params[:size]) if params[:size].present?
     @shoes = @shoes.where("price_per_day <= ?", params[:max_price]) if params[:max_price].present?
     @shoes = @shoes.order(price_per_day: params[:sort_price]) if params[:sort_price].present?
+    @shoes = @shoes.having('AVG(reviews.rating) >= ?', params[:min_rating].to_i) if params[:min_rating].present?
+
     render :index
   end
+
 
   def show
     @reviews = @shoe.reviews.order(created_at: :desc)
