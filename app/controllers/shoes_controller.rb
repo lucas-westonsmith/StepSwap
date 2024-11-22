@@ -11,6 +11,13 @@ class ShoesController < ApplicationController
                  .select('shoes.*, COALESCE(AVG(reviews.rating), 0) as average_rating')
                  .group('shoes.id')
 
+    # Apply the search filter for title, description, and brand
+    if params[:search].present?
+      @shoes = @shoes.where('shoes.title ILIKE ? OR shoes.description ILIKE ? OR shoes.brand ILIKE ?',
+                            "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%")
+    end
+
+    # Apply other filters
     @shoes = @shoes.where(brand: params[:brand]) if params[:brand].present?
     @shoes = @shoes.where(size: params[:size]) if params[:size].present?
     @shoes = @shoes.where("price_per_day <= ?", params[:max_price]) if params[:max_price].present?
@@ -19,6 +26,8 @@ class ShoesController < ApplicationController
 
     render :index
   end
+
+
 
 
   def show
