@@ -54,17 +54,6 @@
                       <i class="fa-solid fa-trash fa-flip-horizontal fa-xl trash" style="color: #F58e8e;"></i>  <!-- Font Awesome Trash Icon -->
                     <% end %>
                   </p>
-
-                  <!-- Action Buttons (Edit and Delete) - placed under Price per day -->
-                  <div class="mb-3">
-                    <%= link_to edit_shoe_path(shoe), class: "btn btn-primary btn-sm" do %>
-                      Edit
-                    <% end %>
-                    <%= link_to shoe_path(shoe), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this shoe from your list?" }, class: "btn btn-danger btn-sm" do %>
-                      <i class="fa-solid fa-trash fa-flip-horizontal fa-xl trash" style="color: #F58e8e;"></i> <!-- Font Awesome Trash Icon -->
-                    <% end %>
-                  </div>
-
                   <h6 class="mt-4">Bookings for this Shoe:</h6>
 
                   <% if shoe.bookings.empty? %>
