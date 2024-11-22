@@ -2,8 +2,8 @@
   <!-- Shoe Brand -->
   <h1 class="shoe-brand"><%= @shoe.title %></h1>
 
-  <div class="main-content">
-    <!-- Large Image Section -->
+  <div class="main-content d-flex justify-content-between">
+    <!-- Left: Image Section -->
     <div class="image-section">
       <% if @shoe.photo.attached? %>
         <%= cl_image_tag @shoe.photo.key,
@@ -13,18 +13,18 @@
         <img src="<%= asset_path('default-image.jpg') %>" alt="<%= @shoe.title %>" title="<%= @shoe.title %>">
       <% end %>
 
-  <div class="description-section">
+     <div class="description-section">
     <h2>Description</h2>
     <p><%= @shoe.description %></p>
   </div>
 
+
     </div>
 
-    <!-- Right-Side Details and Form Section -->
+    <!-- Right: Details and Form Section -->
     <div class="right-section">
-      <!-- Details Section -->
-
-        <!-- Details -->
+      <!-- Details -->
+      <div class="details-section">
         <p><strong>Brand:</strong> <%= @shoe.brand %></p>
         <p><strong>Size:</strong> <%= @shoe.size %></p>
         <p><strong>Condition:</strong> <%= @shoe.condition.capitalize %></p>
@@ -34,7 +34,7 @@
         <% if user_signed_in? %>
           <% if current_user.wishlist.shoes.include?(@shoe) %>
             <%= link_to remove_item_path(shoe_id: @shoe.id), data: {turbo_method: :delete} do %>
-              <i class="fa-solid fa-heart fa-2xl" style="color: #B197FC;"></i></i>
+              <i class="fa-solid fa-heart fa-2xl" style="color: #B197FC;"></i>
             <% end %>
           <% else %>
             <%= link_to add_item_path(shoe_id: @shoe.id), data: {turbo_method: :post} do %>
@@ -46,76 +46,51 @@
         <% end %>
       </div>
 
+      <!-- Booking Form Section -->
       <div class="form-section" data-controller="booking" data-booking-price-per-day-value="<%= @shoe.price_per_day %>">
-  <h2 class="form-title">Book It and Rock It!</h2>
-  <%= form_with model: [@shoe, @shoe.bookings.build], url: shoe_bookings_path(@shoe), method: :post, local: true, class: 'booking-form' do |f| %>
-    <!-- Start Date -->
-    <div class="form-group">
-      <%= f.label :start_date, "Start Date" %>
-      <%= f.date_field :start_date, required: true, id: 'start_date', class: 'form-control', data: { booking_target: "startDate", action: "change->booking#calculateTotal" } %>
-    </div>
+        <h2 class="form-title">Book It and Rock It!</h2>
+        <%= form_with model: [@shoe, @shoe.bookings.build], url: shoe_bookings_path(@shoe), method: :post, local: true, class: 'booking-form' do |f| %>
+          <!-- Start Date -->
+          <div class="form-group">
+            <%= f.label :start_date, "Start Date" %>
+            <%= f.date_field :start_date, required: true, class: 'form-control', data: { booking_target: "startDate", action: "change->booking#calculateTotal" } %>
+          </div>
 
-    <!-- End Date -->
-    <div class="form-group">
-      <%= f.label :end_date, "End Date" %>
-      <%= f.date_field :end_date, required: true, id: 'end_date', class: 'form-control', data: { booking_target: "endDate", action: "change->booking#calculateTotal" } %>
-    </div>
+          <!-- End Date -->
+          <div class="form-group">
+            <%= f.label :end_date, "End Date" %>
+            <%= f.date_field :end_date, required: true, class: 'form-control', data: { booking_target: "endDate", action: "change->booking#calculateTotal" } %>
+          </div>
 
-    <!-- Message (Optional) -->
-    <div class="form-group">
-      <%= f.label :message, "Message (Optional)" %>
-      <%= f.text_area :message, rows: 3, class: 'form-control' %>
-    </div>
+          <!-- Message (Optional) -->
+          <div class="form-group">
+            <%= f.label :message, "Message (Optional)" %>
+            <%= f.text_area :message, rows: 3, class: 'form-control' %>
+          </div>
 
-    <!-- Payment Method -->
-    <div class="form-group">
-      <%= f.label :payment_method, "Payment Method" %>
-      <%= f.select :payment_method, options_for_select([['Credit Card', 'credit_card'], ['PayPal', 'paypal'], ['Bank Transfer', 'bank_transfer']]), class: 'form-control payment-select' %>
-    </div>
+          <!-- Payment Method -->
+          <div class="form-group">
+            <%= f.label :payment_method, "Payment Method" %>
+            <%= f.select :payment_method, options_for_select([['Credit Card', 'credit_card'], ['PayPal', 'paypal'], ['Bank Transfer', 'bank_transfer']]), class: 'form-control payment-select' %>
+          </div>
 
-    <!-- Total Price Section -->
-    <div class="form-group">
-      <label>Total: $<span id="total_price" data-booking-target="totalPrice">0.00</span></label>
-    </div>
-
-    <!-- Submit Button -->
-    <div class="form-actions">
-      <%= f.submit 'Book Now', class: 'btn btn-success' %>
-    </div>
-  <% end %>
-</div>
-
-  <div class="details-section">
-        <!-- Note moyenne -->
-        <div class="average-rating">
-          <strong>Average Rating: </strong> <!-- Ajout d'un espace après les deux-points -->
-          <% if @average_rating > 0 %>
-            <%= @average_rating %>/5
-            <span class="star" style="font-size: 24px; color: gold;">&#9733;</span> <!-- Grande étoile remplie -->
-          <% else %>
-            <span>No reviews yet</span>
-          <% end %>
-        </div>
-
-
-        <!-- Details -->
-        <p><strong>Brand:</strong> <%= @shoe.brand %></p>
-        <p><strong>Size:</strong> <%= @shoe.size %></p>
-        <p><strong>Condition:</strong> <%= @shoe.condition.capitalize %></p>
-        <p><strong>Price per Day:</strong> $<%= @shoe.price_per_day %></p>
-        <p><strong>Availability:</strong> <%= @shoe.availability ? 'Available' : 'Not Available' %></p>
+          <!-- Total Price Section -->
+          <div class="form-group">
+            <label>Total: $<span id="total_price" data-booking-target="totalPrice">0.00</span></label>
+          </div>
 
         <% if user_signed_in? %>
           <%= button_to 'Add to Wishlist', add_item_path(shoe_id: @shoe.id), method: :post, class: 'btn btn-success' %>
         <% else %>
           <p><%= link_to 'Sign in to add to wishlist', new_user_session_path %></p>
+          <!-- Submit Button -->
+          <div class="form-actions">
+            <%= f.submit 'Book Now', class: 'btn btn-success' %>
+          </div>
         <% end %>
       </div>
     </div>
   </div>
-
-  <!-- Description Section -->
-
 
   <!-- Reviews Section -->
   <div class="reviews-section">
