@@ -12,23 +12,17 @@
       <% else %>
         <img src="<%= asset_path('default-image.jpg') %>" alt="<%= @shoe.title %>" title="<%= @shoe.title %>">
       <% end %>
+
+  <div class="description-section">
+    <h2>Description</h2>
+    <p><%= @shoe.description %></p>
+  </div>
+
     </div>
 
     <!-- Right-Side Details and Form Section -->
     <div class="right-section">
       <!-- Details Section -->
-      <div class="details-section">
-        <!-- Note moyenne -->
-        <div class="average-rating">
-          <strong>Average Rating: </strong> <!-- Ajout d'un espace après les deux-points -->
-          <% if @average_rating > 0 %>
-            <%= @average_rating %>/5
-            <span class="star" style="font-size: 24px; color: gold;">&#9733;</span> <!-- Grande étoile remplie -->
-          <% else %>
-            <span>No reviews yet</span>
-          <% end %>
-        </div>
-
 
         <!-- Details -->
         <p><strong>Brand:</strong> <%= @shoe.brand %></p>
@@ -91,14 +85,37 @@
   <% end %>
 </div>
 
+  <div class="details-section">
+        <!-- Note moyenne -->
+        <div class="average-rating">
+          <strong>Average Rating: </strong> <!-- Ajout d'un espace après les deux-points -->
+          <% if @average_rating > 0 %>
+            <%= @average_rating %>/5
+            <span class="star" style="font-size: 24px; color: gold;">&#9733;</span> <!-- Grande étoile remplie -->
+          <% else %>
+            <span>No reviews yet</span>
+          <% end %>
+        </div>
+
+
+        <!-- Details -->
+        <p><strong>Brand:</strong> <%= @shoe.brand %></p>
+        <p><strong>Size:</strong> <%= @shoe.size %></p>
+        <p><strong>Condition:</strong> <%= @shoe.condition.capitalize %></p>
+        <p><strong>Price per Day:</strong> $<%= @shoe.price_per_day %></p>
+        <p><strong>Availability:</strong> <%= @shoe.availability ? 'Available' : 'Not Available' %></p>
+
+        <% if user_signed_in? %>
+          <%= button_to 'Add to Wishlist', add_item_wishlists_path(shoe_id: @shoe.id), method: :post, class: 'btn btn-success' %>
+        <% else %>
+          <p><%= link_to 'Sign in to add to wishlist', new_user_session_path %></p>
+        <% end %>
+      </div>
     </div>
   </div>
 
   <!-- Description Section -->
-  <div class="description-section">
-    <h2>Description</h2>
-    <p><%= @shoe.description %></p>
-  </div>
+
 
   <!-- Reviews Section -->
   <div class="reviews-section">
