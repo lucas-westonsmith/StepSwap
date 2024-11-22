@@ -1,6 +1,7 @@
 <div class="container my-5">
-  <h1 class="mb-4 text-center">My Bookings</h1>
-
+<div class="border-bottom mb-4">
+  <h1 class="mb-4 text-center">My bookings</h1>
+</div>
   <% if @bookings.empty? %>
     <div class="empty-message">
       <h2>Nothing booked yet? 😱 Let’s change that! 🏃‍♀️</h2>
@@ -48,7 +49,7 @@
               </p>
               <!-- Button to leave a review -->
               <% if booking.reviews.empty? %> <!-- Check if no review exists for this booking -->
-                <%= link_to 'Leave a Review', new_shoe_booking_review_path(booking.shoe, booking), class: 'btn btn-primary' %>
+                <%= link_to 'Leave a Review', new_shoe_booking_review_path(booking.shoe, booking), class: 'btn btn-success', style: "border-radius: 14px" %>
               <% else %>
                 <p class="text-success">You already left a review!</p>
               <% end %>

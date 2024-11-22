@@ -1,3 +1,4 @@
+<div class="border-bottom my-4">
 <%= form_with url: filter_shoes_path, method: :get, local: true, class: 'filter-form' do |f| %>
   <!-- Search Bar -->
   <div class="filter-group">
@@ -36,3 +37,4 @@
   <!-- Reset Filters Button -->
   <%= link_to 'Clear Filters', shoes_path, class: 'btn btn-success mt-3 round', method: :get %>
 <% end %>
+</div>
