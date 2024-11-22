@@ -51,8 +51,10 @@
               <!-- Vérifier si la réservation est confirmée avant d'afficher le bouton -->
               <% if booking.confirmed? && booking.reviews.empty? %>
                 <%= link_to 'Leave a Review', new_shoe_booking_review_path(booking.shoe, booking), class: 'btn btn-success', style: "border-radius: 14px" %>
-              <% elsif booking.pending? || booking.declined? %>
+              <% elsif booking.pending? %>
                 <p class="text-muted">You can leave a review once the booking is confirmed.</p>
+              <% elsif booking.declined? %>
+                <!-- Ne rien afficher si le statut est "declined" -->
               <% else %>
                 <p class="text-success">You already left a review!</p>
               <% end %>
@@ -63,3 +65,4 @@
     </div>
   <% end %>
 </div>
+
