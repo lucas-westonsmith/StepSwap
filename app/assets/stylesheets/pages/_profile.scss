@@ -5,14 +5,14 @@
   border-radius: 5px;
   border-width: 2px;
   border-color: rgba(164, 162, 162, 0.284);
-  width: 500px;
+  width: 600px;
   margin-bottom: 50px;
   padding-top: 10px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-direction: row;
-  margin-left: 475px;
+  margin-left: 425px;
 }
 
 // Edit account form layout
@@ -111,9 +111,14 @@
 
 .profile-details-avatar{
   margin-left: 15px;
-  margin-bottom: 15px;
-  width: 175px;
-  height: 175px;
+  margin-right: 15px;
+  margin-bottom: 10px;
+  width: 225px;
+  height: 200px;
   border-style: solid;
-  border-radius: 5px;
+  border-radius: 25px;
+}
+
+.profile-info-text{
+  margin-left: 15px;
 }

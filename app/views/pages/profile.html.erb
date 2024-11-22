@@ -2,15 +2,19 @@
   <h2>Account information</h2><br>
 </div>
 <div class= "profile-info">
-  <div>
+  <div class="profile-info-text">
     <p><strong>First name:   </strong> <%= current_user.first_name %></p>
     <p><strong>Last name:   </strong><%= current_user.last_name %></p>
     <p><strong>Email:   </strong> <%= current_user.email %></p>
     <p><strong>Phone number:   </strong><%= current_user.phone_number %></p>
-    <p><strong>Date of birth:   </strong><%= current_user.date_of_birth %></p>
+    <p><strong>Date of birth:   </strong><%= current_user.date_of_birth.strftime("%d-%m-%Y") if current_user.date_of_birth.present? %></p>
   </div>
   <div>
-    <%= image_tag current_user.avatar, class: "profile-details-avatar"%>
+    <% if current_user.avatar.attached? %>
+      <%= image_tag current_user.avatar, class: "profile-details-avatar"%>
+    <% else %>
+      <%= image_tag "default-avatar.png" , class: "profile-details-avatar"%>
+    <% end %>
   </div>
 </div>
 

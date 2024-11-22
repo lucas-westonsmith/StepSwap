@@ -27,10 +27,9 @@ Rails.application.routes.draw do
 
   resources :bookings, only: [:index]
 
-  resources :wishlists, only: [:show] do
-    post 'add_item', on: :collection
-    delete 'remove_item', on: :collection
-  end
+  resources :wishlists, only: [:show]
+  post 'wishlists/add_item/:shoe_id', to: 'wishlists#add_item', as: :add_item
+  delete 'wishlists/remove_item/:shoe_id', to: 'wishlists#remove_item', as: :remove_item
   # Defines the root path route ("/")
   # root "posts#index"
   resources :bookings, only: [:index] do

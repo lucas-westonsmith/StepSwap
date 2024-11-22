@@ -46,9 +46,8 @@
                 <% end %><br>
                 <strong>Price per day:</strong> <%= booking.shoe.price_per_day %> €<br>
               </p>
-
-              <!-- Bouton pour laisser un avis -->
-              <% if booking.reviews.empty? %> <!-- Vérifie si aucun avis n'a été laissé -->
+              <!-- Button to leave a review -->
+              <% if booking.reviews.empty? %> <!-- Check if no review exists for this booking -->
                 <%= link_to 'Leave a Review', new_shoe_booking_review_path(booking.shoe, booking), class: 'btn btn-primary' %>
               <% else %>
                 <p class="text-success">You already left a review!</p>
@@ -60,4 +59,3 @@
     </div>
   <% end %>
 </div>
-
