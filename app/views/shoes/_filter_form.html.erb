@@ -1,25 +1,36 @@
 <%= form_with url: filter_shoes_path, method: :get, local: true, class: 'filter-form' do |f| %>
+  <!-- Brand Filter -->
   <div class="filter-group">
     <%= f.label :brand, 'Brand' %>
     <%= f.select :brand, options_for_select(['', 'Adidas', 'Asics', 'Balenciaga', 'Birkenstock', 'Brooks', 'Clarks', 'Columbia', 'Converse', 'Dr. Martens', 'Fila', 'Gucci', 'Hoka One One', 'Jordan', 'Keen', 'Lacoste', 'Merrell', 'Mizuno', 'New Balance', 'Nike', 'Puma', 'Reebok', 'Salomon', 'Saucony', 'Skechers', 'The North Face', 'Timberland', 'Under Armour', 'Vans', 'Prada']), include_blank: true %>
   </div>
 
+  <!-- Size Filter -->
   <div class="filter-group">
     <%= f.label :size, 'Size' %>
     <%= f.select :size, options_for_select([36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46]), include_blank: true %>
   </div>
 
+  <!-- Max Price Filter -->
   <div class="filter-group">
     <%= f.label :max_price, 'Max Price' %>
     <%= f.number_field :max_price, step: 0.01, min: 0 %>
   </div>
 
+  <!-- Sort by Price Filter -->
   <div class="filter-group">
     <%= f.label :sort_price, 'Sort by Price' %>
     <%= f.select :sort_price, options_for_select([['Low to High', 'asc'], ['High to Low', 'desc']]), include_blank: true %>
   </div>
 
-   <button type="submit" class="btn btn-success redondo">
+  <!-- Average Rating Filter -->
+  <div class="filter-group">
+    <%= f.label :min_rating, 'Minimum Average Rating' %>
+    <%= f.select :min_rating, options_for_select([['Any', ''], ['1 Star', 1], ['2 Stars', 2], ['3 Stars', 3], ['4 Stars', 4], ['5 Stars', 5]]), include_blank: true %>
+  </div>
+
+  <!-- Submit Button -->
+  <button type="submit" class="btn btn-success redondo">
     <i class="fa-solid fa-magnifying-glass"></i>
-</button>
+  </button>
 <% end %>

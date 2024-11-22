@@ -17,7 +17,7 @@ class BookingsController < ApplicationController
     @booking.shoe = @shoe
 
     if @booking.save
-      redirect_to my_list_shoes_path, notice: 'Your booking request has been sent to the owner.'
+      redirect_to shoe_path(@shoe), notice: 'Your booking request has been sent to the owner.'
     else
       render :new, status: :unprocessable_entity
     end
