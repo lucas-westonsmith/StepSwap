@@ -91,14 +91,18 @@
                     <% end %>
                   <% end %>
 
+                  <%= link_to edit_shoe_path(shoe), class: "btn btn-primary" do %>
+                      Edit
+                    <% end %>
+
+
                   <!-- Delete Button -->
                     <%= link_to shoe_path(shoe), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this shoe from your list?" } do %>
                          <i class="fa-solid fa-trash fa-flip-horizontal fa-xl trash" style="color: #F58e8e;"></i>  <!-- Font Awesome Trash Icon -->
                     <% end %>
 
-                    <%= link_to edit_shoe_path(shoe)do %>
-                         <i class="fa-solid fa-pencil lapis" style="color: #F58e8e;"></i>  <!-- Font Awesome Trash Icon -->
-                    <% end %>
+
+
 
                   <!-- Edit Button -->
                 </div>

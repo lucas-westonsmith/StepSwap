@@ -77,12 +77,6 @@
             <label>Total: $<span id="total_price" data-booking-target="totalPrice">0.00</span></label>
           </div>
 
-          <% if user_signed_in? %>
-            <%= button_to 'Add to Wishlist', add_item_path(shoe_id: @shoe.id), method: :post, class: 'btn btn-success' %>
-          <% else %>
-            <p><%= link_to 'Sign in to add to wishlist', new_user_session_path %></p>
-          <% end %>
-
           <!-- Submit Button -->
           <div class="form-actions">
             <%= f.submit 'Book Now', class: 'btn btn-success' %>
