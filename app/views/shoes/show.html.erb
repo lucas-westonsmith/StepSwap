@@ -13,12 +13,10 @@
         <img src="<%= asset_path('default-image.jpg') %>" alt="<%= @shoe.title %>" title="<%= @shoe.title %>">
       <% end %>
 
-     <div class="description-section">
-    <h2>Description</h2>
-    <p><%= @shoe.description %></p>
-  </div>
-
-
+      <div class="description-section">
+        <h2>Description</h2>
+        <p><%= @shoe.description %></p>
+      </div>
     </div>
 
     <!-- Right: Details and Form Section -->
@@ -33,11 +31,11 @@
 
         <% if user_signed_in? %>
           <% if current_user.wishlist.shoes.include?(@shoe) %>
-            <%= link_to remove_item_path(shoe_id: @shoe.id), data: {turbo_method: :delete} do %>
+            <%= link_to remove_item_path(shoe_id: @shoe.id), data: { turbo_method: :delete } do %>
               <i class="fa-solid fa-heart fa-2xl" style="color: #B197FC;"></i>
             <% end %>
           <% else %>
-            <%= link_to add_item_path(shoe_id: @shoe.id), data: {turbo_method: :post} do %>
+            <%= link_to add_item_path(shoe_id: @shoe.id), data: { turbo_method: :post } do %>
               <i class="fa-regular fa-heart fa-2xl wishlist" style="color: #B197FC;"></i>
             <% end %>
           <% end %>
@@ -79,10 +77,12 @@
             <label>Total: $<span id="total_price" data-booking-target="totalPrice">0.00</span></label>
           </div>
 
-        <% if user_signed_in? %>
-          <%= button_to 'Add to Wishlist', add_item_path(shoe_id: @shoe.id), method: :post, class: 'btn btn-success' %>
-        <% else %>
-          <p><%= link_to 'Sign in to add to wishlist', new_user_session_path %></p>
+          <% if user_signed_in? %>
+            <%= button_to 'Add to Wishlist', add_item_path(shoe_id: @shoe.id), method: :post, class: 'btn btn-success' %>
+          <% else %>
+            <p><%= link_to 'Sign in to add to wishlist', new_user_session_path %></p>
+          <% end %>
+
           <!-- Submit Button -->
           <div class="form-actions">
             <%= f.submit 'Book Now', class: 'btn btn-success' %>
@@ -95,7 +95,6 @@
   <!-- Reviews Section -->
   <div class="reviews-section">
     <h2>Customer Reviews</h2>
-
     <% if @reviews.any? %>
       <% @reviews.each do |review| %>
         <div class="review-card">

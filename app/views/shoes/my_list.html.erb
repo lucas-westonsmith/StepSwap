@@ -60,9 +60,7 @@
                         </div>
 
               <!-- Delete Button -->
-             <%= link_to shoe_path(shoe), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this shoe from your list?" } do %>
-                <i class="fa-solid fa-trash fa-flip-horizontal fa-xl trash" style="color: #F58e8e;"></i>  <!-- Font Awesome Trash Icon -->
-            <% end %>
+
                         <!-- Action Buttons -->
                         <% if booking.pending? %>
                           <div class="d-flex">
@@ -85,24 +83,24 @@
                             <% end %>
                           </div>
                         <% elsif booking.confirmed? %>
-                          <p class="text-info">You already confirmed this booking.</p>
+                          <p class="text-info">You confirmed this booking.</p>
                         <% elsif booking.declined? %>
-                          <p class="text-danger">You already declined this booking.</p>
+                          <p class="text-danger">You declined this booking.</p>
                         <% end %>
                       </div>
                     <% end %>
                   <% end %>
 
                   <!-- Delete Button -->
-                  <%= link_to shoe_path(shoe), method: :delete, data: { turbo_confirm: "Are you sure you want to remove this shoe from your list?" }, class: "text-danger" do %>
-                    <i class="fa-solid fa-trash fa-flip-horizontal fa-xl trash"></i> <!-- Font Awesome Trash Icon -->
-                  <% end %>
+                    <%= link_to shoe_path(shoe), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this shoe from your list?" } do %>
+                         <i class="fa-solid fa-trash fa-flip-horizontal fa-xl trash" style="color: #F58e8e;"></i>  <!-- Font Awesome Trash Icon -->
+                    <% end %>
+
+                    <%= link_to edit_shoe_path(shoe)do %>
+                         <i class="fa-solid fa-pencil lapis" style="color: #F58e8e;"></i>  <!-- Font Awesome Trash Icon -->
+                    <% end %>
 
                   <!-- Edit Button -->
-                  <%= link_to edit_shoe_path(shoe), class: "mx-3 editar" do %>
-                    <i class="fas fa-edit"></i>
-                  <% end %>
-
                 </div>
               </div>
             </div>
