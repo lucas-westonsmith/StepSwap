@@ -106,7 +106,7 @@
         <p><strong>Availability:</strong> <%= @shoe.availability ? 'Available' : 'Not Available' %></p>
 
         <% if user_signed_in? %>
-          <%= button_to 'Add to Wishlist', add_item_wishlists_path(shoe_id: @shoe.id), method: :post, class: 'btn btn-success' %>
+          <%= button_to 'Add to Wishlist', add_item_path(shoe_id: @shoe.id), method: :post, class: 'btn btn-success' %>
         <% else %>
           <p><%= link_to 'Sign in to add to wishlist', new_user_session_path %></p>
         <% end %>

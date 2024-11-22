@@ -42,15 +42,13 @@
 
                 <div class="d-flex justify-content-between">
                   <%= link_to 'View Details', shoe_path(shoe), class: 'btn btn-success btn-sm' %>
-                  <%= button_to 'Remove', remove_item_wishlists_path(shoe_id: shoe.id), method: :delete, class: 'btn btn-danger' %>
+                  <%= link_to remove_item_path(shoe, from_action: "wishlist"), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this shoe from your list?" } do %>
+                    <i class="fa-solid fa-trash fa-xl trash" style="color: #F58e8e;"></i></i>
+                  <% end %>
                 </div>
               </div>
 
-            <div class="d-flex justify-content-between">
-              <%= link_to 'View Details', shoe_path(shoe), class: 'btn btn-success btn-sm' %>
-              <%= button_to 'Remove', remove_item_path(shoe_id: shoe.id, from_action: "wishlist"), method: :delete, class: 'delete-button' %>
 
-            </div>
           </div>
         <% end %>
       </div>
