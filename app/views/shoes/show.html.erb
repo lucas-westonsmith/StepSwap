@@ -1,7 +1,8 @@
 <div class="container">
   <!-- Shoe Brand -->
+  <div class="border-bottom my-4">
   <h1 class="shoe-brand"><%= @shoe.title %></h1>
-
+  </div>
   <div class="main-content d-flex justify-content-between">
     <!-- Left: Image Section -->
     <div class="image-section">
@@ -23,6 +24,15 @@
     <div class="right-section">
       <!-- Details -->
       <div class="details-section">
+              <div class="average-rating">
+          <strong>Average Rating: </strong> <!-- Ajout d'un espace après les deux-points -->
+          <% if @average_rating > 0 %>
+            <%= @average_rating %>/5
+            <span class="star" style="font-size: 24px; color: gold;">&#9733;</span> <!-- Grande étoile remplie -->
+          <% else %>
+            <span>No reviews yet</span>
+          <% end %>
+        </div>
         <p><strong>Brand:</strong> <%= @shoe.brand %></p>
         <p><strong>Size:</strong> <%= @shoe.size %></p>
         <p><strong>Condition:</strong> <%= @shoe.condition.capitalize %></p>

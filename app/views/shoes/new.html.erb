@@ -1,10 +1,9 @@
 
-
-<div class="new-shoe-title">
+<div class="new-shoe-title border-bottom my-4">
   <h1>Post your shoes!</h1>
 </div>
 
-<div style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
+<div class="my-4" style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
   <%= simple_form_for @shoe, url: shoes_path, local: true, data: { turbo: false } do |f| %>
     <!-- Title -->
     <strong><%= f.input :title, as: :string, label: "Title", required: true, input_html: { class: "form-control" } %></strong>
