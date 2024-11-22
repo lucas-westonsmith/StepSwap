@@ -1,25 +1,39 @@
 <%= form_with url: filter_shoes_path, method: :get, local: true, class: 'filter-form' do |f| %>
+  <!-- Search Bar -->
+  <div class="filter-group">
+    <%= f.label :search, 'Search Shoes' %>
+    <%= f.text_field :search, placeholder: 'Search by title or...', class: 'form-control' %>
+  </div>
+
+  <!-- Brand Filter -->
   <div class="filter-group">
     <%= f.label :brand, 'Brand' %>
     <%= f.select :brand, options_for_select(['', 'Adidas', 'Asics', 'Balenciaga', 'Birkenstock', 'Brooks', 'Clarks', 'Columbia', 'Converse', 'Dr. Martens', 'Fila', 'Gucci', 'Hoka One One', 'Jordan', 'Keen', 'Lacoste', 'Merrell', 'Mizuno', 'New Balance', 'Nike', 'Puma', 'Reebok', 'Salomon', 'Saucony', 'Skechers', 'The North Face', 'Timberland', 'Under Armour', 'Vans', 'Prada']), include_blank: true %>
   </div>
 
+  <!-- Size Filter -->
   <div class="filter-group">
     <%= f.label :size, 'Size' %>
     <%= f.select :size, options_for_select([36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46]), include_blank: true %>
   </div>
 
+  <!-- Max Price Filter -->
   <div class="filter-group">
     <%= f.label :max_price, 'Max Price' %>
     <%= f.number_field :max_price, step: 0.01, min: 0 %>
   </div>
 
+  <!-- Sort by Price Filter -->
   <div class="filter-group">
     <%= f.label :sort_price, 'Sort by Price' %>
     <%= f.select :sort_price, options_for_select([['Low to High', 'asc'], ['High to Low', 'desc']]), include_blank: true %>
   </div>
 
-   <button type="submit" class="btn btn-success redondo">
+  <!-- Submit Button -->
+  <button type="submit" class="btn btn-success redondo">
     <i class="fa-solid fa-magnifying-glass"></i>
-</button>
+  </button>
+
+  <!-- Reset Filters Button -->
+  <%= link_to 'Clear Filters', shoes_path, class: 'btn btn-success mt-3 round', method: :get %>
 <% end %>

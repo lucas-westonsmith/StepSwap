@@ -1,0 +1,24 @@
+.wishlist-background {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+
+  /* Explosion de couleur */
+  background: radial-gradient(circle at center,
+              #6a11cb,
+              #b721ff,
+              #ff77e9,
+              #00d4ff,
+              #6a11cb);
+  background-size: 300% 300%;
+  animation: gradientExplosion 6s ease-in-out infinite;
+}
+
+@keyframes gradientExplosion {
+  0% { background-position: 50% 50%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 50% 50%; }
+}

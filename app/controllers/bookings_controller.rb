@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_shoe, only: [:new, :create]
-  before_action :set_booking, only: [:show, :edit, :update]
+  before_action :set_booking, only: [:show, :edit, :update, :accept, :decline]
 
   def index
     @bookings = current_user.bookings
@@ -17,12 +17,11 @@ class BookingsController < ApplicationController
     @booking.shoe = @shoe
 
     if @booking.save
-      redirect_to bookings_path, notice: 'Your booking request has been sent to the owner.'
+      redirect_to shoe_path(@shoe), notice: 'Your booking request has been sent to the owner.'
     else
       render :new, status: :unprocessable_entity
     end
   end
-
 
   def show
     @booking
@@ -40,6 +39,22 @@ class BookingsController < ApplicationController
     end
   end
 
+  def accept
+    if @booking.update(status: 'confirmed')
+      redirect_to my_list_shoes_path, notice: 'Booking was successfully accepted.'
+    else
+      redirect_to my_list_shoes_path, alert: 'Failed to accept the booking.'
+    end
+  end
+
+  def decline
+    if @booking.update(status: 'canceled')
+      redirect_to my_list_shoes_path, notice: 'Booking was successfully declined.'
+    else
+      redirect_to my_list_shoes_path, alert: 'Failed to decline the booking.'
+    end
+  end
+
   private
 
   def set_shoe
@@ -53,6 +68,4 @@ class BookingsController < ApplicationController
   def booking_params
     params.require(:booking).permit(:start_date, :end_date, :message, :payment_method)
   end
-
-
 end

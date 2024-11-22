@@ -1,0 +1,46 @@
+/* .empty-message */
+.empty-message {
+  background-color: #f9f9f9;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  text-align: center; /* Center align all content within the message */
+}
+
+/* Heading for empty states */
+.empty-message h2 {
+  font-size: 2em;
+  font-weight: bold;
+  color: #2C3E50;
+  margin-bottom: 20px;
+}
+
+/* Paragraph for empty states */
+.empty-message p {
+  font-size: 1.2em;
+  color: #7F8C8D;
+  margin-bottom: 30px;
+}
+
+/* Empty action button */
+.empty-message .empty-button {
+  font-size: 1.1em;
+  padding: 10px 25px;
+  background-color: #8E44AD;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover state for the empty button */
+.empty-message .empty-button:hover {
+  background-color: #6A2E8E;
+}
+
+/* Add an emoji or icon to the button for extra attraction */
+.empty-message .empty-button i {
+  margin-right: 8px;
+}
